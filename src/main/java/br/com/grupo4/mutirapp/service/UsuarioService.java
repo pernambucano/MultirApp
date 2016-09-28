@@ -10,6 +10,10 @@ import br.com.grupo4.mutirapp.model.Usuario;
 
 @Component
 public interface UsuarioService {
+<<<<<<< HEAD
+=======
+	public List<Acao> listarAcoes(String email);
+>>>>>>> 9990c91d3eb47c4ff9bffb052549a280a48d79f5
 	public Usuario getUsuarioByEmail(String email);
 	public void cadastrarUsuario(Usuario usuario);
 	public void alterarUsuario(Usuario usuario);

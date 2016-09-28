@@ -29,6 +29,15 @@ public class UsuarioServiceImpl implements UsuarioService {
 		return instance;
 	}
 
+<<<<<<< HEAD
+=======
+	@Override
+	public List<Acao> listarAcoes(String email) {
+		 List<Acao> lista = (List<Acao>) this.usuarioDAO.buscarPorEmail(email).getAcoes();
+		// return lista;
+		return lista;
+	}
+>>>>>>> 9990c91d3eb47c4ff9bffb052549a280a48d79f5
 
 	@Override
 	public Usuario getUsuarioByEmail(String email) {
