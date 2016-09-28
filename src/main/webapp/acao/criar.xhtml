@@ -19,7 +19,7 @@
                                 <p:outputLabel for="status" value="Status: "
                                     styleClass="control-label text-center" />
                                 <h:selectOneMenu id="status" styleClass="form-control"
-                                    value="" required="true">
+                                    value="#{acaoBean.acao.status}" required="true">
                                     <f:selectItem itemLabel="Em aberto" itemValue="EM_ABERTO" />
                                     <f:selectItem itemLabel="Finalizada" itemValue="FINALIZADA" />
                                     <f:selectItem itemLabel="Cancelada" itemValue="CANCELADA" />
@@ -33,7 +33,7 @@
 		                        <p:outputLabel for="categoria" value="Categoria: "
 		                            styleClass="control-label text-center" />
 		                        <h:selectOneMenu id="categoria" styleClass="form-control"
-		                            value="" required="true">
+		                            value="#{acaoBean.acao.categoria}" required="true">
 		                            <f:selectItem itemLabel="" itemValue="" />
 		                            <f:selectItem itemLabel="Animais" itemValue="ANIMAIS" />
 		                            <f:selectItem itemLabel="Meio-Ambiente" itemValue="MEIO_AMBIENTE" />
@@ -46,7 +46,7 @@
 		            <div class="form-group">
 		                <p:outputLabel for="titulo" value="Título: "
 		                    styleClass="control-label text-center" />
-		                <p:inputText id="titulo" value="" styleClass="form-control"
+		                <p:inputText id="titulo" value="#{acaoBean.acao.titulo}" styleClass="form-control"
 		                    required="true" />
 		            </div>
 		            
@@ -54,7 +54,7 @@
 		            <div class="form-group">
 		                <p:outputLabel for="descricao" value="Descrição: "
 		                    styleClass="control-label text-center" />
-		                <p:inputTextarea id="descricao" value="" styleClass="form-control"
+		                <p:inputTextarea id="descricao" value="#{acaoBean.acao.descricao}" styleClass="form-control"
 		                    required="true" />
 		            </div>
 		            
@@ -64,8 +64,10 @@
 		                    <div class="form-group">
 		                        <p:outputLabel for="dataCadastro" value="Data de cadastro: "
 	                                styleClass="control-label text-center" />
-	                            <p:inputText id="dataCadastro" value=""
-	                                styleClass="form-control date-picker" required="true" />
+	                            <p:inputText id="dataCadastro" value="#{acaoBean.acao.dataCadastro}"
+	                                styleClass="form-control date-picker" required="true" >
+	                                <f:convertDateTime pattern="dd/MM/yyyy" />
+	                                </p:inputText>
 		                    </div> <!-- /.form-group -->
 		                </div> <!-- /.col-md-6 -->
 		                
@@ -74,8 +76,10 @@
 		                    <div class="form-group">
 		                        <p:outputLabel for="dataOcorrencia" value="Data de ocorrência: "
 	                                styleClass="control-label text-center" />
-	                            <p:inputText id="dataOcorrencia" value=""
-	                                styleClass="form-control date-picker" required="true" />
+	                            <p:inputText id="dataOcorrencia" value="#{acaoBean.acao.dataOcorrencia}"
+	                                styleClass="form-control date-picker" required="true" >
+	                                <f:convertDateTime pattern="dd/MM/yyyy" />
+	                                </p:inputText>
 		                    </div> <!-- /.form-group -->
 		                </div> <!-- /.col-md-6 -->
 		            </div> <!-- /.row -->
@@ -88,7 +92,7 @@
                             <div class="form-group">
                                 <p:outputLabel for="endCep" value="CEP: "
                                     styleClass="control-label text-center" />
-                                <p:inputMask id="endCep" value=""
+                                <p:inputMask id="endCep" value="#{acaoBean.acao.endCep}"
                                     styleClass="form-control" required="true"
                                     mask="99999-999" />
                             </div> <!-- /.form-group -->
@@ -100,7 +104,7 @@
                                 <p:outputLabel for="endUf" value="UF: "
 		                            styleClass="control-label text-center" />
 		                        <h:selectOneMenu id="endUf" styleClass="form-control"
-		                            value="" required="true">
+		                            value="#{acaoBean.acao.endUf}" required="true">
 		                            <f:selectItem itemLabel="" itemValue="" />
 		                            <f:selectItem itemLabel="PE" itemValue="PE" />
 		                        </h:selectOneMenu>
@@ -115,7 +119,7 @@
                                 <p:outputLabel for="endCidade" value="Cidade: "
                                     styleClass="control-label text-center" />
                                 <h:selectOneMenu id="endCidade" styleClass="form-control"
-                                    value="" required="true">
+                                    value="#{acaoBean.acao.endCidade}" required="true">
                                     <f:selectItem itemLabel="" itemValue="" />
                                     <f:selectItem itemLabel="Recife" itemValue="Recife" />
                                 </h:selectOneMenu>
@@ -127,7 +131,7 @@
                             <div class="form-group">
                                 <p:outputLabel for="endRua" value="Rua: "
                                     styleClass="control-label text-center" />
-                                <p:inputText id="endRua" value=""
+                                <p:inputText id="endRua" value="#{acaoBean.acao.endRua}"
                                     styleClass="form-control" required="true" />
                             </div> <!-- /.form-group -->
                         </div> <!-- /.col-md-6 -->
@@ -139,7 +143,7 @@
                             <div class="form-group">
                                 <p:outputLabel for="endBairro" value="Bairro: "
                                     styleClass="control-label text-center" />
-                                <p:inputText id="endBairro" value=""
+                                <p:inputText id="endBairro" value="#{acaoBean.acao.endBairro}"
                                     styleClass="form-control" required="true" />
                             </div> <!-- /.form-group -->
                         </div> <!-- /.col-md-6 -->
@@ -149,7 +153,7 @@
                             <div class="form-group">
                                 <p:outputLabel for="endReferencia" value="Referência: "
                                     styleClass="control-label text-center" />
-                                <p:inputText id="endReferencia" value=""
+                                <p:inputText id="endReferencia" value="#{acaoBean.acao.endReferencia}"
                                     styleClass="form-control" required="true" />
                             </div> <!-- /.form-group -->
                         </div> <!-- /.col-md-6 -->
@@ -159,7 +163,7 @@
                     <div class="form-group">
                         <p:outputLabel for="observacoes" value="Observações: "
                             styleClass="control-label text-center" />
-                        <p:inputTextarea id="observacoes" value=""
+                        <p:inputTextarea id="observacoes" value="#{acaoBean.acao.observacoes}"
                             styleClass="form-control" required="true" />
                     </div> <!-- /.form-group -->
                     
@@ -167,7 +171,7 @@
                 
                 <!-- Salvar -->
                 <div class="form-group col-md-12">
-                    <h:commandButton value="Salvar" styleClass="btn btn-lg btn-primary pull-right" />
+                    <h:commandButton value="Salvar" action="#{acaoBean.salvar}" styleClass="btn btn-lg btn-primary pull-right" />
                     <a href="/mutirapp/acoes/" class="btn btn-lg btn-default pull-left">
                         Voltar</a>
                 </div>

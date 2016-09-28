@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/templates/dashboard_acao.xhtml">
+	<ui:define name="title">Ação X</ui:define>
+
+	<ui:define name="content">
+
+		<div class="jumbotron">
+			<div class="container">
+				<div class="content">
+					<h1>Nome da Ação</h1>
+					<p>
+						<h:outputText value="Categoria" />
+					</p>
+				</div>
+			</div>
+
+		</div>
+		<div class="row">
+
+			<h:form>
+				<p class="text-center">
+					<h:commandButton value="Tenho interesse!"
+						class="btn btn-lg btn-success" />
+				</p>
+			</h:form>
+		</div>
+		<div class="row">
+		<div class="col-md-4 ">
+			<div class="well">
+			<h4 class="section">Informações</h4>
+					<p>
+						<h:outputText value="Descrição aqui!!" />
+					</p>
+					<p>
+						<label>Publicado por:</label>
+						<h:outputText value="  Nome da pessoa" /><br/>
+						<h:outputText value="  27 de Agosto de 2016" />
+					</p>
+					
+					<h4 class="section">Status</h4>
+					<p>
+						<h:outputText value="Status" />
+					</p>
+					
+
+					<h4 class="section">Observações</h4>
+					<p>
+						<h:outputText value="Observações" />
+					</p>
+			</div>
+		</div>
+			<div class="col-md-4">
+				<div class="well">
+					<h4 class="section">Quando vai ser?</h4>
+					<p>
+						<label>Data da ação: </label>
+						<h:outputText value="28 de Setembro de 2016" />
+					</p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="well">
+					<h4 class="section">Onde vai ser?</h4>
+					<p>
+						<h:outputText value="UF" />
+					</p>
+					<p>
+						<h:outputText value="Cidade" />
+					</p>
+					<p>
+						<h:outputText value="Bairro" />
+					</p>
+					<p>
+						<h:outputText value="Rua" />
+					</p>
+					<p>
+						<h:outputText value="CEP" />
+					</p>
+					<p>
+						<h:outputText value="Referência" />
+					</p>
+				</div>
+			</div>
+</div>
+
+		<div class="row">
+			<h:form>
+				<p class="text-center">
+					<h:commandButton value="Tenho interesse!"
+						class="btn btn-lg btn-success" />
+				</p>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>
+
+</html>

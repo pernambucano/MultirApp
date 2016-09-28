@@ -1,0 +1,68 @@
+body {
+	padding-top: 50px;
+}
+
+h1 {
+	color: #060 !important;
+}
+
+h4.section {
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 4px;
+}
+
+/*
+ * .navbar-mutirapp
+ */
+.navbar-mutirapp {
+	background-color: #050;
+}
+
+.navbar-mutirapp a {
+	color: #fff;
+}
+
+.navbar-mutirapp a:hover, .navbar-mutirapp a:focus {
+	background-color: #040 !important;
+	color: #fff !important;
+}
+
+.navbar-mutirapp button span {
+	color: #fff !important;
+}
+
+.btn-inside {
+	background-color: transparent;
+	border: none;
+	height: 34px;
+	position: absolute;
+	right: 15px;
+	top: 0;
+	width: 40px;
+}
+
+a.btn-success, a.btn-primary, a.btn-danger {
+	color: #fff;
+}
+
+/* JUMBOTRON */
+.jumbotron {
+	background: url('../resources/img/jumbotron_bg2.jpg') no-repeat center center;
+	margin-bottom: 0px;
+	height: 250px;
+}
+
+.jumbotron h1 {
+	color: #fff !important;
+}
+
+.jumbotron p {
+	color: #fff !important;
+}
+
+.well {
+     width: 30%;
+     margin-left:40px;
+     color: black;
+     background-color: green;
+}
