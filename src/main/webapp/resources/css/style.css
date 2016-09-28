@@ -1,0 +1,71 @@
+body {
+	padding-top: 50px;
+}
+
+h1 {
+    color: #060 !important;
+}
+
+h4.section {
+	border-bottom: 1px solid #ccc;
+	padding-bottom: 4px;
+}
+
+/*
+ * .navbar-mutirapp
+ */
+
+.navbar-mutirapp {
+	background-color: #050;
+}
+
+.navbar-mutirapp a {
+	color: #fff;
+}
+
+.navbar-mutirapp a:hover,
+.navbar-mutirapp a:focus {
+	background-color: #040 !important;
+	color: #fff !important;
+}
+
+.navbar-mutirapp button span {
+	color: #fff !important;
+}
+
+.btn-inside {
+	background-color: transparent;
+	border: none;
+	height: 34px;
+	position: absolute;
+	right: 15px;
+	top: 0;
+	width: 40px;
+}
+
+a.btn-success,
+a.btn-primary,
+a.btn-danger {
+	color: #fff;
+}
+
+/*
+ * DataTable do PrimeFaces
+ */
+
+.ui-widget-header {
+	background-color: transparent;
+	border: none;
+}
+
+.ui-widget-header .ui-state-active {
+	background-color: #aaa;
+	box-shadow: 0 0 1px #888;
+	color: #000;
+}
+
+.ui-widget-header .ui-corner-all {
+	border: none;
+}
+
+

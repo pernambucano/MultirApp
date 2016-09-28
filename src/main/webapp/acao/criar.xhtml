@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+<ui:composition template="/templates/dashboard.xhtml">
+    <ui:define name="title">Criar Ação</ui:define>
+    
+    <ui:define name="content">
+        <h:form acceptcharset="UTF-8">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- Status -->
+                            <div class="form-group">
+                                <p:outputLabel for="status" value="Status: "
+                                    styleClass="control-label text-center" />
+                                <h:selectOneMenu id="status" styleClass="form-control"
+                                    value="" required="true">
+                                    <f:selectItem itemLabel="Em aberto" itemValue="EM_ABERTO" />
+                                    <f:selectItem itemLabel="Finalizada" itemValue="FINALIZADA" />
+                                    <f:selectItem itemLabel="Cancelada" itemValue="CANCELADA" />
+                                </h:selectOneMenu>
+                            </div> <!-- /.form-group -->
+                        </div> <!-- /.col-md-6 -->
+                        
+                        <div class="col-md-6">
+                            <!-- Categoria -->
+		                    <div class="form-group">
+		                        <p:outputLabel for="categoria" value="Categoria: "
+		                            styleClass="control-label text-center" />
+		                        <h:selectOneMenu id="categoria" styleClass="form-control"
+		                            value="" required="true">
+		                            <f:selectItem itemLabel="" itemValue="" />
+		                            <f:selectItem itemLabel="Animais" itemValue="ANIMAIS" />
+		                            <f:selectItem itemLabel="Meio-Ambiente" itemValue="MEIO_AMBIENTE" />
+		                        </h:selectOneMenu>
+		                    </div>
+                        </div> <!-- /.col-md-6 -->
+                    </div> <!-- /.row -->
+		            
+		            <!-- Título-->
+		            <div class="form-group">
+		                <p:outputLabel for="titulo" value="Título: "
+		                    styleClass="control-label text-center" />
+		                <p:inputText id="titulo" value="" styleClass="form-control"
+		                    required="true" />
+		            </div>
+		            
+		            <!-- Descrição -->
+		            <div class="form-group">
+		                <p:outputLabel for="descricao" value="Descrição: "
+		                    styleClass="control-label text-center" />
+		                <p:inputTextarea id="descricao" value="" styleClass="form-control"
+		                    required="true" />
+		            </div>
+		            
+		            <div class="row">
+		                <!-- Data de Cadastro -->
+		                <div class="col-md-6">
+		                    <div class="form-group">
+		                        <p:outputLabel for="dataCadastro" value="Data de cadastro: "
+	                                styleClass="control-label text-center" />
+	                            <p:inputText id="dataCadastro" value=""
+	                                styleClass="form-control date-picker" required="true" />
+		                    </div> <!-- /.form-group -->
+		                </div> <!-- /.col-md-6 -->
+		                
+		                <!-- Data de Ocorrência -->
+		                <div class="col-md-6">
+		                    <div class="form-group">
+		                        <p:outputLabel for="dataOcorrencia" value="Data de ocorrência: "
+	                                styleClass="control-label text-center" />
+	                            <p:inputText id="dataOcorrencia" value=""
+	                                styleClass="form-control date-picker" required="true" />
+		                    </div> <!-- /.form-group -->
+		                </div> <!-- /.col-md-6 -->
+		            </div> <!-- /.row -->
+                </div> <!-- /.col-md-6 -->
+                
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- CEP -->
+                            <div class="form-group">
+                                <p:outputLabel for="endCep" value="CEP: "
+                                    styleClass="control-label text-center" />
+                                <p:inputMask id="endCep" value=""
+                                    styleClass="form-control" required="true"
+                                    mask="99999-999" />
+                            </div> <!-- /.form-group -->
+                        </div> <!-- /.col-md-6 -->
+                        
+                        <div class="col-md-6">
+                            <!-- UF -->
+                            <div class="form-group">
+                                <p:outputLabel for="endUf" value="UF: "
+		                            styleClass="control-label text-center" />
+		                        <h:selectOneMenu id="endUf" styleClass="form-control"
+		                            value="" required="true">
+		                            <f:selectItem itemLabel="" itemValue="" />
+		                            <f:selectItem itemLabel="PE" itemValue="PE" />
+		                        </h:selectOneMenu>
+                            </div> <!-- /.form-group -->
+                        </div> <!-- /.col-md-6 -->
+                    </div> <!-- /.row -->
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- Cidade -->
+                            <div class="form-group">
+                                <p:outputLabel for="endCidade" value="Cidade: "
+                                    styleClass="control-label text-center" />
+                                <h:selectOneMenu id="endCidade" styleClass="form-control"
+                                    value="" required="true">
+                                    <f:selectItem itemLabel="" itemValue="" />
+                                    <f:selectItem itemLabel="Recife" itemValue="Recife" />
+                                </h:selectOneMenu>
+                            </div> <!-- /.form-group -->
+                        </div> <!-- /.col-md-6 -->
+                        
+                        <div class="col-md-6">
+                            <!-- Rua -->
+                            <div class="form-group">
+                                <p:outputLabel for="endRua" value="Rua: "
+                                    styleClass="control-label text-center" />
+                                <p:inputText id="endRua" value=""
+                                    styleClass="form-control" required="true" />
+                            </div> <!-- /.form-group -->
+                        </div> <!-- /.col-md-6 -->
+                    </div> <!-- /.row -->
+                    
+                    <div class="row">
+                        <div class="col-md-6">
+                            <!-- Bairro -->
+                            <div class="form-group">
+                                <p:outputLabel for="endBairro" value="Bairro: "
+                                    styleClass="control-label text-center" />
+                                <p:inputText id="endBairro" value=""
+                                    styleClass="form-control" required="true" />
+                            </div> <!-- /.form-group -->
+                        </div> <!-- /.col-md-6 -->
+                        
+                        <div class="col-md-6">
+                            <!-- Referência -->
+                            <div class="form-group">
+                                <p:outputLabel for="endReferencia" value="Referência: "
+                                    styleClass="control-label text-center" />
+                                <p:inputText id="endReferencia" value=""
+                                    styleClass="form-control" required="true" />
+                            </div> <!-- /.form-group -->
+                        </div> <!-- /.col-md-6 -->
+                    </div> <!-- /.row -->
+                    
+                    <!-- Observações -->
+                    <div class="form-group">
+                        <p:outputLabel for="observacoes" value="Observações: "
+                            styleClass="control-label text-center" />
+                        <p:inputTextarea id="observacoes" value=""
+                            styleClass="form-control" required="true" />
+                    </div> <!-- /.form-group -->
+                    
+                </div> <!-- /.col-md-6 -->
+                
+                <!-- Salvar -->
+                <div class="form-group col-md-12">
+                    <h:commandButton value="Salvar" styleClass="btn btn-lg btn-primary pull-right" />
+                    <a href="/mutirapp/acoes/" class="btn btn-lg btn-default pull-left">
+                        Voltar</a>
+                </div>
+            </div> <!-- /.row -->
+        </h:form>
+    </ui:define>
+</ui:composition>
+
+</html>

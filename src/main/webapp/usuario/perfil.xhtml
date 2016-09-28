@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+<ui:composition template="/templates/dashboard.xhtml">
+    <ui:define name="title">Perfil do Usuário</ui:define>
+    
+    <ui:define name="content">
+        <h:form styleClass="col-md-6 col-md-offset-3" acceptcharset="UTF-8">
+            <h:messages />
+            
+            <h:inputHidden id="id" value="#{usuarioBean.usuario.id}" />
+            
+            <!-- Nome -->
+            <div class="form-group">
+	            <p:outputLabel for="nome" value="Nome: " styleClass="control-label text-center" />
+	            <p:inputText id="nome" styleClass="form-control" value="#{usuarioBean.usuario.name}" size="40" required="true" />
+            </div>
+            
+            <!-- E-mail -->
+            <div class="form-group">
+                <p:outputLabel for="email" value="E-mail: " styleClass="control-label" />
+                <p:inputText id="email" styleClass="form-control" value="#{usuarioBean.usuario.email}" size="40" required="true" />
+            </div>
+            
+            <!-- Senha -->
+            <div class="form-group">
+                <p:outputLabel for="senha" value="Senha: " styleClass="control-label" />
+	            <p:password id="senha" styleClass="form-control" value="#{usuarioBean.usuario.senha}" size="40" required="true" />
+            </div>
+
+            <!-- Confirmação de Senha -->
+            <div class="form-group">
+                <p:outputLabel for="confirmacaoSenha" value="Confirmação de senha: " styleClass="control-label" />
+	            <p:password id="confirmacaoSenha" styleClass="form-control" value="#{usuarioBean.confirmacaoSenha}" size="40" required="true" />
+	        </div>
+            
+            <!-- Salvar -->
+            <div class="form-group">
+                <h:commandButton value="Salvar" action="#{usuarioBean.salvar}"
+                    styleClass="btn btn-lg btn-primary pull-right" />
+                <a href="/mutirapp/acao/buscar.jsf" class="btn btn-lg btn-default pull-left">
+                    Voltar</a>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>
+
+</html>
