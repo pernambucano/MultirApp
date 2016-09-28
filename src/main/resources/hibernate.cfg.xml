@@ -10,21 +10,14 @@
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="connection.url">jdbc:mysql://127.0.0.1:3306/testando</property>
 		<property name="connection.username">root</property>
-<<<<<<< HEAD
-		<property name="connection.password">paulo123</property>
-=======
 		<property name="connection.password"></property>
->>>>>>> 9990c91d3eb47c4ff9bffb052549a280a48d79f5
 		
 		<!-- Sessão atual do Hibernate deve ser diferente a cada nova thread -->
 		<property name="current_session_context_class">thread</property>
 		
 		<!-- Criação automática da estrutura das tabelas -->
-<<<<<<< HEAD
 		<property name="hibernate.hbm2ddl.auto">create</property>
-=======
-		<property name="hibernate.hbm2ddl.auto">update</property>
->>>>>>> 9990c91d3eb47c4ff9bffb052549a280a48d79f5
+
 
 		<!-- Usando as configurações do C3PO para pool de conexões -->
 		<property name="c3po.min_size">5</property>
