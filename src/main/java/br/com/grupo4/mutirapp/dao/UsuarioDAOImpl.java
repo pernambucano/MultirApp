@@ -39,7 +39,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	public void salvar(Usuario usuario) {
 		Session session = sessionFactory.getCurrentSession();
 		session.getTransaction().begin();
-		session.save(usuario);
+		session.saveOrUpdate(usuario);
 		session.getTransaction().commit();
 	}
 
@@ -48,7 +48,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	public void atualizar(Usuario usuario) {
 		Session session = sessionFactory.getCurrentSession();
 		session.getTransaction().begin();
-		session.update(usuario);
+		session.saveOrUpdate(usuario);
 		session.getTransaction().commit();
 	}
 
