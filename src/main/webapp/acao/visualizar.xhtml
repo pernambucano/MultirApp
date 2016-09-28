@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+<ui:composition template="/templates/dashboard.xhtml">
+    <ui:define name="title">Ação X</ui:define>
+    
+    <ui:define name="content">
+        <h:form>
+            <p class="text-center">
+                <h:commandButton value="Tenho interesse!"
+                    class="btn btn-lg btn-success" />
+	        </p>
+        </h:form>
+        
+        <div class="row">
+            <div class="col-md-4">
+                <h4 class="section">Status</h4>
+                <p><h:outputText value="Status" /></p>
+                <h4 class="section">Categoria</h4>
+                <p><h:outputText value="Categoria" /></p>
+                <h4 class="section">Título</h4>
+                <p><h:outputText value="Título" /></p>
+                <h4 class="section">Descrição</h4>
+                <p><h:outputText value="Descrição" /></p>
+                <h4 class="section">Data de cadastro</h4>
+                <p><h:outputText value="Data de cadastro" /></p>
+                <h4 class="section">Data de ocorrência</h4>
+                <p><h:outputText value="Data de ocorrência" /></p>
+            </div> <!-- /.col-md-4 -->
+            <div class="col-md-4">
+                <h4 class="section">CEP</h4>
+                <p><h:outputText value="CEP" /></p>
+                <h4 class="section">UF</h4>
+                <p><h:outputText value="UF" /></p>
+                <h4 class="section">Cidade</h4>
+                <p><h:outputText value="Cidade" /></p>
+                <h4 class="section">Rua</h4>
+                <p><h:outputText value="Rua" /></p>
+                <h4 class="section">Bairro</h4>
+                <p><h:outputText value="Bairro" /></p>
+                <h4 class="section">Referência</h4>
+                <p><h:outputText value="Referência" /></p>
+            </div> <!-- /.col-md-4 -->
+            <div class="col-md-4">
+                <h4 class="section">Observações</h4>
+                <p><h:outputText value="Observações" /></p>
+            </div> <!-- /.col-md-4 -->
+        </div> <!-- /.row -->
+        
+        <h:form>
+            <p class="text-center">
+                <h:commandButton value="Tenho interesse!"
+                    class="btn btn-lg btn-success" />
+            </p>
+        </h:form>
+    </ui:define>
+</ui:composition>
+
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    
+<ui:composition template="/templates/dashboard.xhtml">
+    <ui:define name="title">Minhas Ações</ui:define>
+    
+    <ui:define name="content">
+        <p:dataTable var="" value="" reflow="true" rows="20" paginator="true">
+            <p:column headerText="Categoria">
+                <h:outputText value="1" />
+            </p:column>
+         
+            <p:column headerText="Título">
+                <h:outputText value="1" />
+            </p:column>
+         
+            <p:column headerText="Status">
+                <h:outputText value="1" />
+            </p:column>
+            
+            <p:column headerText="UF">
+                <h:outputText value="1" />
+            </p:column>
+            
+            <p:column headerText="Ações" styleClass="text-center">
+                <a href="#" title="Editar" class="btn btn-xs btn-primary">
+                    <span class="glyphicon glyphicon-pencil"></span> Editar</a>
+                <a href="#" title="Excluir" class="btn btn-xs btn-danger">
+                    <span class="glyphicon glyphicon-trash"></span> Excluir</a>
+            </p:column>
+        </p:dataTable>
+    </ui:define>
+</ui:composition>
+
+</html>
