@@ -61,8 +61,8 @@ a.btn-success, a.btn-primary, a.btn-danger {
 }
 
 .well {
-     width: 30%;
-     margin-left:40px;
+	margin: 10px 30px 0 30px ;
+	height: 100%;
      color: black;
      background-color: green;
 }

@@ -58,5 +58,9 @@ public class AcaoServiceImpl implements AcaoService {
 		return acaoDAO.listarUltimasAcoes(max);
 	}
 
+	@Override
+	public Acao getAcaoById(int id) {
+		return acaoDAO.getAcaoById(id);
+	}
 
 }

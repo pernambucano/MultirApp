@@ -12,4 +12,5 @@ public interface AcaoService {
 	public void deleteAcaoByTitulo(String titulo);
 	public void deleteAcaoById(int id);
 	public List<Acao> getUltimasAcoes(int max);
+	public Acao getAcaoById(int id);
 }

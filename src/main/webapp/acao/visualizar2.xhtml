@@ -9,13 +9,12 @@
 	<ui:define name="title">Ação X</ui:define>
 
 	<ui:define name="content">
-
 		<div class="jumbotron">
 			<div class="container">
 				<div class="content">
 					<h1>Nome da Ação</h1>
 					<p>
-						<h:outputText value="Categoria" />
+						<h:outputText value="#{acaoBean.acao.categoria}" />
 					</p>
 				</div>
 			</div>
@@ -31,63 +30,66 @@
 			</h:form>
 		</div>
 		<div class="row">
-		<div class="col-md-4 ">
-			<div class="well">
-			<h4 class="section">Informações</h4>
+			<div class="col-md-6">
+				<div class="well">
+					<h4 class="section">Informações</h4>
 					<p>
-						<h:outputText value="Descrição aqui!!" />
+						<h:outputText value="#{acaoBean.acao.descricao}" />
 					</p>
 					<p>
 						<label>Publicado por:</label>
-						<h:outputText value="  Nome da pessoa" /><br/>
-						<h:outputText value="  27 de Agosto de 2016" />
+						<h:outputText value="  Nome da pessoa" />
+						<br />
+						<h:outputText value="#{acaoBean.acao.dataCadastro}" />
 					</p>
-					
+
 					<h4 class="section">Status</h4>
 					<p>
-						<h:outputText value="Status" />
+						<h:outputText value="#{acaoBean.acao.status}" />
 					</p>
-					
+
 
 					<h4 class="section">Observações</h4>
 					<p>
-						<h:outputText value="Observações" />
+						<h:outputText value="#{acaoBean.acao.observacoes}" />
 					</p>
+				</div>
+			</div>
+			<div class="col-md-6">
+				<div class="row">
+					<div class="well">
+						<h4 class="section">Quando vai ser?</h4>
+						<p>
+							<label>Data da ação: </label>
+							<h:outputText value="#{acaoBean.acao.dataOcorrencia}" />
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="well">
+						<h4 class="section">Onde vai ser?</h4>
+						<p>
+							<h:outputText value="#{acaoBean.acao.endUf}" />
+						</p>
+						<p>
+							<h:outputText value="#{acaoBean.acao.endCidade}" />
+						</p>
+						<p>
+							<h:outputText value="#{acaoBean.acao.endBairro}" />
+						</p>
+						<p>
+							<h:outputText value="#{acaoBean.acao.endRua}" />
+						</p>
+						<p>
+							<h:outputText value="#{acaoBean.acao.endCep}" />
+						</p>
+						<p>
+							<h:outputText value="#{acaoBean.acao.endReferencia}" />
+						</p>
+					</div>
+				</div>
 			</div>
 		</div>
-			<div class="col-md-4">
-				<div class="well">
-					<h4 class="section">Quando vai ser?</h4>
-					<p>
-						<label>Data da ação: </label>
-						<h:outputText value="28 de Setembro de 2016" />
-					</p>
-				</div>
-			</div>
-			<div class="col-md-4">
-				<div class="well">
-					<h4 class="section">Onde vai ser?</h4>
-					<p>
-						<h:outputText value="UF" />
-					</p>
-					<p>
-						<h:outputText value="Cidade" />
-					</p>
-					<p>
-						<h:outputText value="Bairro" />
-					</p>
-					<p>
-						<h:outputText value="Rua" />
-					</p>
-					<p>
-						<h:outputText value="CEP" />
-					</p>
-					<p>
-						<h:outputText value="Referência" />
-					</p>
-				</div>
-			</div>
-</div>
 
 		<div class="row">
 			<h:form>

@@ -36,14 +36,19 @@ public class AcaoBean {
 
 	public String salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
-		FacesMessage message = new FacesMessage("Operação realizada com sucesso.");
+		FacesMessage message = new FacesMessage("OperaÃ§Ã£o realizada com sucesso.");
 		context.addMessage(null, message);
 		this.acaoService.cadastrarAcao(acao);
-		return null;
+		return "/acao/visualizar2";
 	}
 
 	public String excluir() {
 		return null;
+	}
+	
+	public String getAcaoById(int id){
+		this.acaoService.getAcaoById(id);
+		return "/acao/visualizar2";
 	}
 
 	/*
