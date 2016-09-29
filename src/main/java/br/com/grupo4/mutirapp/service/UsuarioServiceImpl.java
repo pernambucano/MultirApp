@@ -3,11 +3,8 @@ package br.com.grupo4.mutirapp.service;
 import java.util.Date;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.transaction.Transactional;
 
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Service;
 
 import br.com.grupo4.mutirapp.dao.UsuarioDAO;

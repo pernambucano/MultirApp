@@ -39,7 +39,7 @@ public class AcaoBean {
 		FacesMessage message = new FacesMessage("Operação realizada com sucesso.");
 		context.addMessage(null, message);
 		this.acaoService.cadastrarAcao(acao);
-		return "/acao/visualizar2";
+		return "/acao/visualizar";
 	}
 
 	public String excluir() {
@@ -48,7 +48,7 @@ public class AcaoBean {
 	
 	public String getAcaoById(int id){
 		this.acaoService.getAcaoById(id);
-		return "/acao/visualizar2";
+		return "/acao/visualizar";
 	}
 
 	/*
