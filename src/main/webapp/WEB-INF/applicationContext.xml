@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:beans="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:tx="http://www.springframework.org/schema/tx"
     xmlns:context="http://www.springframework.org/schema/context"
@@ -13,6 +14,10 @@
 			<value>java:comp/env/jdbc/MutirAppDB</value>
 		</property>
 	</bean>
+	
+	<beans:bean id="encoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
+        <beans:constructor-arg value="12" />
+    </beans:bean>
 
 	<tx:annotation-driven />
 	<context:component-scan base-package="br.com.grupo4.mutirapp.controller" />

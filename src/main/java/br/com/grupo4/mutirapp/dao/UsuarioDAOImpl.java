@@ -9,6 +9,7 @@ import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.com.grupo4.mutirapp.model.Acao;
 import br.com.grupo4.mutirapp.model.Interesse;
@@ -48,6 +49,10 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 			// Remoção do contexto persistente
 //			session.evict(usuarioPermissao);
 		}
+		
+		// Hash para senha
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder(12);
+		usuario.setSenha(encoder.encode(usuario.getSenha()));
 
 		Session session = sessionFactory.getCurrentSession();
 

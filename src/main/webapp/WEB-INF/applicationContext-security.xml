@@ -5,6 +5,7 @@
         http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
         http://www.springframework.org/schema/security
         http://www.springframework.org/schema/security/spring-security.xsd">
+	
 	<http auto-config="true">
 		<intercept-url pattern="/acao/**" access="ROLE_USUARIO" />
 		<intercept-url pattern="/usuario/**" access="ROLE_USUARIO" />
@@ -14,8 +15,10 @@
 		<logout />
 		<remember-me />
 	</http>
+	
 	<authentication-manager>
 		<authentication-provider>
+            <password-encoder ref="encoder" />
 			<jdbc-user-service data-source-ref="mutirappDataSource"
 			    authorities-by-username-query="SELECT u.email, p.permissao
                                                                     FROM usuario u, usuario_permissao p

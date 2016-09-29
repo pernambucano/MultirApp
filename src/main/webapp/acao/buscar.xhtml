@@ -44,10 +44,15 @@
             </p:column>
             
             <p:column headerText="Ações" styleClass="text-center">
-                <a href="/mutirapp/acao/visualizar.jsf" title="Editar" class="btn btn-xs btn-primary">
-                    <span class="glyphicon glyphicon-new-window"></span> Visualizar</a>
+               <!--  <a href="/mutirapp/acao/visualizar.jsf" title="Editar" class="btn btn-xs btn-primary">
+                    <span class="glyphicon glyphicon-new-window"></span> Visualizar</a> -->
                 <a href="#" title="Editar" class="btn btn-xs btn-success">
                     <span class="glyphicon glyphicon-ok"></span> Interessado</a>
+                    
+            <p:link value="Visualizar" class="btn btn-xs btn-primary" outcome="/acao/visualizar">
+            <ui:param name="id" value="#{acoes.id}" />
+           
+        </p:link>
             </p:column>
 		</p:dataTable>
     </ui:define>

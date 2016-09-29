@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -37,7 +36,7 @@ public class Acao implements Serializable, Comparable<Acao>{
 	private String endCep;//not null
 	private String endUf;//not null
 	private String endCidade;//not null
-	private String endLogradouroTipo;//not null
+	private String endLogradouroTipo;
 	private String endLogradouro;//not null
 	private String endBairro;//not null
 	private String endReferencia; // null
