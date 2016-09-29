@@ -516,14 +516,11 @@ p.description {
   color: #DDDDDD;
 } 
 
-.footer-color-black hr {
-  border-color: #444444;
-}
-
 .footer .copyright {
   color: #777777;
   padding: 10px 15px;
   line-height: 20px;
+  margin: 25px 0;
   text-align: center;
 }
 
