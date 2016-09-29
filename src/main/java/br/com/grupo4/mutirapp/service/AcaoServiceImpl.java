@@ -54,9 +54,9 @@ public class AcaoServiceImpl implements AcaoService {
 	}
 
 	@Override
-	public List<Acao> getUltimasAcoes() {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Acao> getUltimasAcoes(int max) {
+		return acaoDAO.listarUltimasAcoes(max);
 	}
+
 
 }

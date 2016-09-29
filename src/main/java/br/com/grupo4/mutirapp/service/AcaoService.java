@@ -10,6 +10,6 @@ public interface AcaoService {
 	public void cadastrarAcao(Acao acao);
 	public void alterarAcao(Acao acao);
 	public void deleteAcaoByTitulo(String titulo);
-	public List<Acao> getUltimasAcoes(); // 10 acoes
 	public void deleteAcaoById(int id);
+	public List<Acao> getUltimasAcoes(int max);
 }

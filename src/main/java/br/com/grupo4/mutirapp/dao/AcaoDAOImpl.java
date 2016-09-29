@@ -8,6 +8,7 @@ import org.hibernate.Criteria;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 
 import br.com.grupo4.mutirapp.model.Acao;
@@ -109,6 +110,20 @@ public class AcaoDAOImpl implements AcaoDAO {
 			// System.out.println("Ta chegnado em inserir de professordaoimpl");
 			session.getTransaction().begin();
 			List<Acao> lista = session.createCriteria(Acao.class).list();
+			session.getTransaction().commit();
+			return lista;
+		}
+		return null;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	@Transactional
+	public List<Acao> listarUltimasAcoes(int max) {
+		Session session = sessionFactory.getCurrentSession();
+		if (session.isOpen()) {
+			session.getTransaction().begin();
+			List<Acao> lista = session.createCriteria(Acao.class).addOrder(Order.desc("dataCadastro")).setMaxResults(max).list();
 			session.getTransaction().commit();
 			return lista;
 		}

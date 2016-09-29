@@ -19,7 +19,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "acao")
-public class Acao implements Serializable{
+public class Acao implements Serializable, Comparable<Acao>{
 	
 	private static final long serialVersionUID = 3715431135816526348L;
 	
@@ -220,8 +220,8 @@ public class Acao implements Serializable{
 		this.observacoes = observacoes;
 	}
 
-	
-//	// N�o est� completo! 
+//	
+////	// N�o est� completo! 
 //	@Override
 //	public boolean equals(Object arg0) {
 //		if (this == arg0)
@@ -333,5 +333,13 @@ public class Acao implements Serializable{
 				+ ", endCep=" + endCep + ", endUf=" + endUf + ", endCidade=" + endCidade + ", endRua=" + endRua
 				+ ", endBairro=" + endBairro + ", endReferencia=" + endReferencia + ", status=" + status
 				+ ", observacoes=" + observacoes + ", interesses=" + interesses + "]";
+	}
+
+
+
+	@Override
+	public int compareTo(Acao o) {
+		// TODO Auto-generated method stub
+		return o.getDataCadastro().compareTo(this.getDataCadastro());
 	}
 }
