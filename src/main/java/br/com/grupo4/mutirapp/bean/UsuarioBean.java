@@ -1,5 +1,7 @@
 package br.com.grupo4.mutirapp.bean;
 
+import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -8,6 +10,7 @@ import javax.faces.context.FacesContext;
 
 import org.springframework.stereotype.Component;
 
+import br.com.grupo4.mutirapp.model.Acao;
 import br.com.grupo4.mutirapp.model.Usuario;
 import br.com.grupo4.mutirapp.service.UsuarioService;
 import br.com.grupo4.mutirapp.service.UsuarioServiceImpl;
@@ -20,6 +23,7 @@ public class UsuarioBean {
 	private UsuarioService usuarioService = UsuarioServiceImpl.getInstance();
 	private Usuario usuario;
 	private String confirmacaoSenha;
+	private Acao acaoSelecionada;
 
 	public UsuarioBean() {
 		this.usuario = new Usuario();
@@ -98,6 +102,14 @@ public class UsuarioBean {
 		this.usuario = usuario;
 	}
 
+	public Acao getAcaoSelecionada() {
+		return acaoSelecionada;
+	}
+
+	public void setAcaoSelecionada(Acao acaoSelecionada) {
+		this.acaoSelecionada = acaoSelecionada;
+	}
+	
 	public String getConfirmacaoSenha() {
 		return confirmacaoSenha;
 	}
@@ -105,5 +117,31 @@ public class UsuarioBean {
 	public void setConfirmacaoSenha(String confirmacaoSenha) {
 		this.confirmacaoSenha = confirmacaoSenha;
 	}
+	
+	@Override
+	protected Object clone() throws CloneNotSupportedException {
+		// TODO Auto-generated method stub
+		return super.clone();
+	}
 
+	public List<Acao> getListaAcoesInteressadas() {
+		String email = "bruna@gmail.com";//this.usuario.getEmail();
+		return this.usuarioService.getAcoesInteressadasPorEmail(email);
+	}
+
+	public List<Acao> getListaAcoesCadastradas() {
+		String email = "bruna@gmail.com";//this.usuario.getEmail();
+		return this.usuarioService.getAcoesCadastradasPorEmail(email);
+	}
+
+	public String redirectListener() {
+	    return "/acao/visualizar?faces-redirect=true&id=" + acaoSelecionada.getId();
+	}
+	
+/*	public void redirectListener() {
+		ConfigurableNavigationHandler nh = (ConfigurableNavigationHandler) FacesContext.getCurrentInstance().getApplication().getNavigationHandler();
+	    nh.performNavigation("/acao/visualizar?faces-redirect=true&id=" + acaoSelecionada.getId());
+	    acaoSelecionada = null;
+	}*/
+	
 }
