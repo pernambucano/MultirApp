@@ -3,6 +3,9 @@ package br.com.grupo4.mutirapp.main;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.exception.ConstraintViolationException;
+
+import br.com.grupo4.mutirapp.exception.UsuarioJaCadastradoException;
 import br.com.grupo4.mutirapp.model.Acao;
 import br.com.grupo4.mutirapp.model.TipoCategoria;
 import br.com.grupo4.mutirapp.model.TipoStatus;
@@ -13,7 +16,7 @@ import br.com.grupo4.mutirapp.service.UsuarioService;
 import br.com.grupo4.mutirapp.service.UsuarioServiceImpl;
 
 public class Teste {
-	public static void main(String[] args) {
+	public static void main(String[] args) throws ConstraintViolationException, UsuarioJaCadastradoException {
 		
 		// Testando métodos do service de Usuário
 		
