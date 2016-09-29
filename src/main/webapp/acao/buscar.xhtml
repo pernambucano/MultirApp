@@ -12,43 +12,47 @@
             <h:form styleClass="col-md-6 col-md-offset-3" acceptcharset="UTF-8">
 	            <!-- Nome -->
 	            <div class="form-group">
-	                <p:inputText id="q" styleClass="form-control" size="40" placeholder="Buscar ações..." />
-	                <button class="btn-inside" title="Buscar">
-	                    <span class="glyphicon glyphicon-search"></span>
-	                </button>
+	                <p:inputText id="q" styleClass="form-control" size="40" placeholder="Buscar ações..."  binding="#{inputQuery}"/>
+	                <h:commandButton class="btn-inside" title="Buscar" action="#{acaoBean.buscar(inputQuery.value)}">
+	                </h:commandButton>
 	            </div>
 	            
 	            <!-- Buscar -->
-	            <!-- <div class="form-group">
-	                <h:commandButton value="Buscar" styleClass="btn btn-lg btn-primary pull-left" />
-	            </div> -->
+	             <div class="form-group" style="text-align:center;">
+	                <h:commandButton value="Buscar"  action="#{acaoBean.buscar(inputQuery.value)}" styleClass="btn btn-lg btn-primary" />
+	            </div>
 	        </h:form>
         </div> <!-- /.row -->
         
         <h3 class="text-center">Resultados Encontrados</h3>
         
-        <p:dataTable var="" value="" reflow="true" rows="20" paginator="true">
+        <p:dataTable var="acoes" value="#{acaoBean.listaAcoes}" reflow="true" rows="20" paginator="true">
 		    <p:column headerText="Categoria">
-		        <h:outputText value="1" />
+		        <h:outputText value="#{acoes.categoria}" />
 		    </p:column>
 		 
 		    <p:column headerText="Título">
-		        <h:outputText value="1" />
+		        <h:outputText value="#{acoes.titulo}" />
 		    </p:column>
 		 
 		    <p:column headerText="Status">
-		        <h:outputText value="1" />
+		        <h:outputText value="#{acoes.status}" />
 		    </p:column>
 		    
 		    <p:column headerText="UF">
-                <h:outputText value="1" />
+                <h:outputText value="#{acoes.endUf}" />
             </p:column>
             
             <p:column headerText="Ações" styleClass="text-center">
                 <a href="/mutirapp/acao/visualizar.jsf" title="Editar" class="btn btn-xs btn-primary">
                     <span class="glyphicon glyphicon-new-window"></span> Visualizar</a>
-                <a href="#" title="Editar" class="btn btn-xs btn-success">
-                    <span class="glyphicon glyphicon-ok"></span> Interessado</a>
+               <!--  <a href="#" title="Editar" class="btn btn-xs btn-success">
+                    <span class="glyphicon glyphicon-ok"></span> Interessado</a> -->
+                    
+            <p:link value="Edit" class="btn btn-xs btn-success" outcome="/acao/visualizar">
+            <ui:param name="id" value="#{acoes.id}" />
+           
+        </p:link>
             </p:column>
 		</p:dataTable>
     </ui:define>

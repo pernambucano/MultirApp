@@ -1,6 +1,7 @@
 package br.com.grupo4.mutirapp.model;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
@@ -35,7 +36,8 @@ public class Acao implements Serializable, Comparable<Acao>{
 	private String endCep;//not null
 	private String endUf;//not null
 	private String endCidade;//not null
-	private String endRua;//not null
+	private String endLogradouroTipo;
+	private String endLogradouro;//not null
 	private String endBairro;//not null
 	private String endReferencia; // null
 	
@@ -49,8 +51,8 @@ public class Acao implements Serializable, Comparable<Acao>{
 	
 	
 	public Acao(Usuario usuario, TipoCategoria categoria, String titulo, String descricao, Date dataCadastro,
-			Date dataOcorrencia, String endCep, String endUf, String endCidade, String endRua, String endBairro,
-			TipoStatus status) {
+			Date dataOcorrencia, String endCep, String endUf, String endCidade, String endLogradouroTipo,
+			String endLogradouro, String endBairro, TipoStatus status) {
 		this.usuario = usuario;
 		Categoria = categoria;
 		this.titulo = titulo;
@@ -60,7 +62,8 @@ public class Acao implements Serializable, Comparable<Acao>{
 		this.endCep = endCep;
 		this.endUf = endUf;
 		this.endCidade = endCidade;
-		this.endRua = endRua;
+		this.endLogradouroTipo = endLogradouroTipo;
+		this.endLogradouro = endLogradouro;
 		this.endBairro = endBairro;
 		this.status = status;
 	}
@@ -172,20 +175,32 @@ public class Acao implements Serializable, Comparable<Acao>{
 		this.endCidade = endCidade;
 	}
 
-	@Column(name = "end_rua",nullable = false)
-	public String getEndRua() {
-		return endRua;
+	public String getEndLogradouroTipo() {
+		return endLogradouroTipo;
 	}
 
-	public void setEndRua(String endRua) {
-		this.endRua = endRua;
+	public void setEndLogradouroTipo(String endLogradouroTipo) {
+		this.endLogradouroTipo = endLogradouroTipo;
 	}
 
+	@Column(name = "end_logradouro",nullable = false)
+	public String getEndLogradouro() {
+		
+		if (this.endLogradouroTipo == null)		
+			return endLogradouro;
+		
+		return String.format("%s %s", this.endLogradouroTipo, this.endLogradouro);
+	}
+
+	public void setEndLogradouro(String endLogradouro) {
+		this.endLogradouro = endLogradouro;
+	}
+	
 	@Column(name = "end_bairro",nullable = false)
 	public String getEndBairro() {
 		return endBairro;
 	}
-
+	
 	public void setEndBairro(String endBairro) {
 		this.endBairro = endBairro;
 	}
@@ -222,12 +237,11 @@ public class Acao implements Serializable, Comparable<Acao>{
 	public String toString() {
 		return "Acao [id=" + id + ", usuario=" + usuario + ", Categoria=" + Categoria + ", titulo=" + titulo
 				+ ", descricao=" + descricao + ", dataCadastro=" + dataCadastro + ", dataOcorrencia=" + dataOcorrencia
-				+ ", endCep=" + endCep + ", endUf=" + endUf + ", endCidade=" + endCidade + ", endRua=" + endRua
+				+ ", endCep=" + endCep + ", endUf=" + endUf + ", endCidade=" + endCidade + ", endLogradouroTipo=" + endLogradouroTipo
+				+ ", endLogradouro=" + endLogradouro 
 				+ ", endBairro=" + endBairro + ", endReferencia=" + endReferencia + ", status=" + status
 				+ ", observacoes=" + observacoes + ", interesses=" + interesses + "]";
 	}
-
-
 
 	@Override
 	public int compareTo(Acao o) {

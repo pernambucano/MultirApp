@@ -8,7 +8,7 @@ public interface AcaoDAO {
 	public void salvar(Acao acao);
 	public void atualizar(Acao acao);
 	public void excluir(int id);
-	public Acao buscarPorTitulo(String titulo);
+	public List<Acao> buscarPorTitulo(String titulo);
 	public Acao getAcaoById(int id);
 	public void deleteAcaoByTitulo(String titulo);
 	public List<Acao> listarTodasAcoes();
