@@ -5,10 +5,12 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Service;
 
 import br.com.grupo4.mutirapp.dao.UsuarioDAO;
 import br.com.grupo4.mutirapp.dao.UsuarioDAOImpl;
+import br.com.grupo4.mutirapp.exception.UsuarioJaCadastradoException;
 import br.com.grupo4.mutirapp.model.Acao;
 import br.com.grupo4.mutirapp.model.Interesse;
 import br.com.grupo4.mutirapp.model.Usuario;
@@ -18,7 +20,7 @@ import br.com.grupo4.mutirapp.model.Usuario;
 public class UsuarioServiceImpl implements UsuarioService {
 
 	private UsuarioDAO usuarioDAO = UsuarioDAOImpl.getInstance();
-
+	private AcaoService as = AcaoServiceImpl.getInstance();
 	private static UsuarioServiceImpl instance;
 
 	public static UsuarioServiceImpl getInstance() {
@@ -35,8 +37,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public void cadastrarUsuario(Usuario usuario) {
-		this.usuarioDAO.salvar(usuario);
+	public void cadastrarUsuario(Usuario usuario) throws UsuarioJaCadastradoException, ConstraintViolationException {
+		try { 
+			this.usuarioDAO.salvar(usuario);
+		}catch (ConstraintViolationException e) {
+			throw new UsuarioJaCadastradoException();
+		}
 	}
 
 	@Override
@@ -51,12 +57,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public List<Acao> getAcoesCadastradasPorEmail(String email) {
-		return this.usuarioDAO.listarAcoesCriadasPorId(this.usuarioDAO.buscarPorEmail(email).getId());
+		return this.usuarioDAO.listarAcoesCriadasPorId(email);
 	}
 
 	@Override
 	public List<Acao> getAcoesInteressadasPorEmail(String email) {
-		return this.usuarioDAO.listarAcoesInteressadasPorId(this.usuarioDAO.buscarPorEmail(email).getId());
+		return this.usuarioDAO.listarAcoesInteressadasPorId(email);
 	}
 
 	@Override
@@ -65,6 +71,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 		interesse.setUsuario(usuario);
 		interesse.setAcao(a);
 		interesse.setData(data);
+	
 		usuario.getInteresses().add(interesse);
+		usuarioDAO.atualizar(usuario);
 	}
 }

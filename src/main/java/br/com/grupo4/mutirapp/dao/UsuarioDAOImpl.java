@@ -11,6 +11,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 
 import br.com.grupo4.mutirapp.model.Acao;
+import br.com.grupo4.mutirapp.model.Interesse;
 import br.com.grupo4.mutirapp.model.Usuario;
 import br.com.grupo4.mutirapp.util.HibernateUtil;
 
@@ -62,7 +63,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		}
 		
 		session.getTransaction().begin();
-		session.saveOrUpdate(usuario);
+		session.update(usuario);
 		session.getTransaction().commit();
 	}
 
@@ -116,9 +117,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	public Usuario buscarPorEmail(String email) {
 		Session session = sessionFactory.getCurrentSession();
 		session.getTransaction().begin();
-		Criteria criteria = session.createCriteria(Usuario.class, "usuario");
+		Criteria criteria = session.createCriteria(Usuario.class);
 		criteria.add(Restrictions.eq("email", email));
-		criteria.setMaxResults(1);
 		Usuario u = (Usuario) criteria.uniqueResult();
 		session.getTransaction().commit();
 		return u;
@@ -126,28 +126,30 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 	@Override
 	@Transactional
-	public List<Acao> listarAcoesCriadasPorId(int usuario_id) {
+	public List<Acao> listarAcoesCriadasPorId(String email) {
+		Usuario usuario = this.buscarPorEmail(email);
 		Session session = sessionFactory.getCurrentSession();
 		session.getTransaction().begin();
-		String querySt = "from Acao where usuario_id = :usuarioId";
+		String querySt = "select * from acao where usuario_id = :usuarioId";
 		SQLQuery query =  session.createSQLQuery(querySt);
-		query.addEntity(Usuario.class);
-		query.setParameter("usuarioId", usuario_id);
-		List results = (List<Acao>) query.list();
+		query.addEntity(Acao.class);
+		query.setParameter("usuarioId", usuario.getId());
+		List<Acao> results = query.list();
 		session.getTransaction().commit();
 		return results;
 	}
 
 	@Override
 	@Transactional
-	public List<Acao> listarAcoesInteressadasPorId(int usuario_id) {
+	public List<Acao> listarAcoesInteressadasPorId(String email) {
+		Usuario usuario = this.buscarPorEmail(email);
 		Session session = sessionFactory.getCurrentSession();
 		session.getTransaction().begin();
-		String querySt = "from Interesse where usuario_id = :usuarioId";
+		String querySt = "select a.* from acao a, interesse i where i.usuario_id = :usuarioId and a.id = i.acao_id";
 		SQLQuery query =  session.createSQLQuery(querySt);
-		query.addEntity(Usuario.class);
-		query.setParameter("usuarioId", usuario_id);
-		List results = (List<Acao>) query.list();
+		query.addEntity(Acao.class);
+		query.setParameter("usuarioId", usuario.getId());
+		List<Acao> results = query.list();
 		session.getTransaction().commit();
 		return results;
 	}

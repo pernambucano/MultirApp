@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -64,8 +65,6 @@ public class Acao implements Serializable, Comparable<Acao>{
 		this.endBairro = endBairro;
 		this.status = status;
 	}
-
-
 
 	public Acao(String titulo){
 		this.titulo = titulo;
@@ -219,112 +218,6 @@ public class Acao implements Serializable, Comparable<Acao>{
 	public void setObservacoes(String observacoes) {
 		this.observacoes = observacoes;
 	}
-
-//	
-////	// N�o est� completo! 
-//	@Override
-//	public boolean equals(Object arg0) {
-//		if (this == arg0)
-//			return true;
-//		if (arg0 == null)
-//			return false;
-//		if (getClass() != arg0.getClass())
-//			return false;
-//		
-//		
-//		Acao other = (Acao) arg0;
-//		if (this.getCategoria() == null) {
-//			if (other.getCategoria() != null)
-//				return false;
-//		} else if (!this.getCategoria().equals(other.getCategoria()))
-//			return false;
-//		
-//		
-//		if (this.getCategoria() == null) {
-//			if (other.getCategoria() != null)
-//				return false;
-//		} else if (!this.getCategoria().equals(other.getCategoria()))
-//			return false;
-//		
-//		
-//		if (this.getDescricao() == null) {
-//			if (other.getDescricao() != null)
-//				return false;
-//		} else if (!this.getDescricao().equals(other.getDescricao()))
-//			return false;
-//		
-//		if (this.getEndBairro() == null) {
-//			if (other.getEndBairro() != null)
-//				return false;
-//		} else if (!this.getEndBairro().equals(other.getEndBairro()))
-//			return false;
-//		
-//		if (this.getEndCep() == null) {
-//			if (other.getEndCep() != null)
-//				return false;
-//		} else if (!this.getEndCep().equals(other.getEndCep()))
-//			return false;
-//		
-//		if (this.getEndCidade() == null) {
-//			if (other.getEndCidade() != null)
-//				return false;
-//		} else if (!this.getEndCidade().equals(other.getEndCidade()))
-//			return false;
-//		
-//		if (this.getEndReferencia() == null) {
-//			if (other.getEndReferencia() != null)
-//				return false;
-//		} else if (!this.getEndReferencia().equals(other.getEndReferencia()))
-//			return false;
-//		
-//		if (this.getEndRua() == null) {
-//			if (other.getEndRua() != null)
-//				return false;
-//		} else if (!this.getEndRua().equals(other.getEndRua()))
-//			return false;
-//		
-//		if (this.getEndUf() == null) {
-//			if (other.getEndUf() != null)
-//				return false;
-//		} else if (!this.getEndUf().equals(other.getEndUf()))
-//			return false;
-//		
-//		if (this.getObservacoes() == null) {
-//			if (other.getObservacoes() != null)
-//				return false;
-//		} else if (!this.getObservacoes().equals(other.getObservacoes()))
-//			return false;
-//		
-//		if (this.getTitulo() == null) {
-//			if (other.getTitulo() != null)
-//				return false;
-//		} else if (!this.getTitulo().equals(other.getTitulo()))
-//			return false;
-//		
-//		
-//		return true;
-//		
-//	}
-//
-//	// N�o est� completo! 
-//	@Override
-//	public int hashCode() {
-//		final int prime = 31;
-//		int result = 1;
-//		result = prime * result + ((this.descricao == null) ? 0 : this.descricao.hashCode());
-//		result = prime * result + ((this.endBairro == null) ? 0 : this.endBairro.hashCode());
-//		result = prime * result + ((this.endCep == null) ? 0 : this.endCep.hashCode());
-//		result = prime * result + ((this.endCidade == null) ? 0 : this.endCidade.hashCode());
-//		result = prime * result + ((this.endReferencia == null) ? 0 : this.endReferencia.hashCode());
-//		result = prime * result + ((this.endRua == null) ? 0 : this.endRua.hashCode());
-//		result = prime * result + ((this.endUf == null) ? 0 : this.endUf.hashCode());
-//		result = prime * result + ((this.observacoes == null) ? 0 : this.observacoes.hashCode());
-//		result = prime * result + ((this.titulo == null) ? 0 : this.titulo.hashCode());
-//		result = prime * result + this.getId(); // Id � um inteiro
-//
-//
-//		return result;
-//	}
 
 	@Override
 	public String toString() {

@@ -14,10 +14,6 @@ public interface UsuarioDAO {
 	public Usuario buscarPorLogin(String login);
 	public Usuario buscarPorEmail(String email);
 	public List<Usuario> listar();
-	public List<Acao> listarAcoesCriadasPorId(int usuario_id);
-	public List<Acao> listarAcoesInteressadasPorId(int usuario_id);
-	
-	// Paulo
-	
-	
+	public List<Acao> listarAcoesCriadasPorId(String email);
+	public List<Acao> listarAcoesInteressadasPorId(String email); 
 }

@@ -44,7 +44,6 @@ public class AcaoDAOImpl implements AcaoDAO {
 		} else {
 			// System.out.println("Nao ta open");
 		}
-
 	}
 
 	@Override
