@@ -8,6 +8,8 @@
 <ui:composition template="/templates/dashboard.xhtml">
 	<ui:define name="title">Criar Ação</ui:define>
 
+
+
 	<ui:define name="content">
 		<div class="row">
 			<h:form acceptcharset="UTF-8">
@@ -37,9 +39,11 @@
 								<h:selectOneMenu id="categoria" styleClass="form-control"
 									value="#{acaoBean.acao.categoria}" required="true">
 									<f:selectItem itemLabel="" itemValue="" />
+									<f:selectItem itemLabel="Meio-Ambiente" itemValue="MEIO_AMBIENTE" />
 									<f:selectItem itemLabel="Animais" itemValue="ANIMAIS" />
-									<f:selectItem itemLabel="Meio-Ambiente"
-										itemValue="MEIO_AMBIENTE" />
+									<f:selectItem itemLabel="Outros" itemValue="OUTROS" />
+									
+									
 								</h:selectOneMenu>
 							</div>
 						</div>
@@ -76,11 +80,10 @@
 									<p:ajax event="blur" listener="#{registroBean.dataAtual}"
 										process="data" update="data" />
 								</p:inputMask>-->
-								
+
 								<p:outputLabel for="dataCadastro" value="Data de cadastro: "
 									styleClass="control-label text-center" />
-								<p:inputText id="dataCadastro"
-									value="#{acaoBean.data}"
+								<p:inputText id="dataCadastro" value="#{acaoBean.data}"
 									styleClass="form-control date-picker" required="true">
 									<f:convertDateTime pattern="dd/MM/yyyy" />
 								</p:inputText>
@@ -158,7 +161,8 @@
 							<div class="form-group">
 								<p:outputLabel for="endLogradouro" value="Logradouro: "
 									styleClass="control-label text-center" />
-								<p:inputText id="endLogradouro" value="#{acaoBean.acao.endLogradouro}"
+								<p:inputText id="endLogradouro"
+									value="#{acaoBean.acao.endLogradouro}"
 									styleClass="form-control" required="true" />
 							</div>
 							<!-- /.form-group -->

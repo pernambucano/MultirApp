@@ -19,6 +19,7 @@ import br.com.grupo4.mutirapp.service.BuscaCEPServiceImpl;
 @ManagedBean
 @RequestScoped
 @ViewScoped
+
 public class AcaoBean {
 
 	private AcaoService acaoService = AcaoServiceImpl.getInstance();
@@ -32,7 +33,7 @@ public class AcaoBean {
 
 	/*
 	 * Actions
-	 */
+	 */ 
 	
 	public String buscar(String titulo){
 		this.listaAcoes = this.acaoService.getAcoesByTitulo(titulo); 
