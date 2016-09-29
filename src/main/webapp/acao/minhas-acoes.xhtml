@@ -9,19 +9,13 @@
 	<ui:define name="title">Minhas Ações</ui:define>
 
 	<ui:define name="content">
-		<div style="margin-bottom: 40px;">
 
-			<p:dataTable id="eventsDT" paginatorPosition="bottom"
-				value="#{usuarioBean.listaAcoesInteressadas}" var="acaoInteresse"
-				rowKey="#{acaoInteresse.id}" reflow="true" selectionMode="single"
-				selection="#{usuarioBean.acaoSelecionada}" rows="20"
-				paginator="true">
-
-				<p:ajax event="rowSelect" listener="#{usuarioBean.redirectListener}" />
+		<div style="margin-bottom:40px;">
+			<p:dataTable paginatorPosition="bottom" var="acaoInteresse" value="#{usuarioBean.acoesInteressadas}" reflow="true" rows="20" paginator="true">
 
 				<f:facet name="header">
             	Ações que você se interessou
-        	</f:facet>
+        		</f:facet>
 
 				<p:column headerText="Categoria">
 					<h:outputText value="#{acaoInteresse.categoria}" />
@@ -48,9 +42,9 @@
 					</a>
 				</p:column>
 			</p:dataTable>
-		</div>
-		<div>
-			<p:dataTable value="#{usuarioBean.listaAcoesCadastradas}"
+			</div>
+			<div>
+			<p:dataTable value="#{usuarioBean.acoesCadastradas}"
 				paginatorPosition="bottom" var="acaoCadastrada" reflow="true"
 				rows="20" paginator="true">
 
@@ -86,7 +80,7 @@
 					</a>
 				</p:column>
 			</p:dataTable>
-		</div>
+			</div>
 	</ui:define>
 </ui:composition>
 

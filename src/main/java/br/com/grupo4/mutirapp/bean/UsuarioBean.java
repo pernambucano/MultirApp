@@ -24,7 +24,7 @@ public class UsuarioBean {
 	private Usuario usuario;
 	private String confirmacaoSenha;
 	private Acao acaoSelecionada;
-
+	
 	public UsuarioBean() {
 		this.usuario = new Usuario();
 	}
@@ -40,9 +40,7 @@ public class UsuarioBean {
 	}
 
 	public String editar() {
-		FacesContext fContext = FacesContext.getCurrentInstance();
-		ExternalContext eContext = fContext.getExternalContext();
-		String email = eContext.getRemoteUser();
+		String email = getEmailUsuario();
 		
 		this.usuario = this.usuarioService.getUsuarioByEmail(email);
 		System.out.println(this.usuario.getId());
@@ -118,30 +116,20 @@ public class UsuarioBean {
 		this.confirmacaoSenha = confirmacaoSenha;
 	}
 	
-	@Override
-	protected Object clone() throws CloneNotSupportedException {
-		// TODO Auto-generated method stub
-		return super.clone();
+	public List<Acao> getAcoesCadastradas() {
+		
+		return usuarioService.getAcoesCadastradasPorEmail(getEmailUsuario());
 	}
 
-	public List<Acao> getListaAcoesInteressadas() {
-		String email = "bruna@gmail.com";//this.usuario.getEmail();
-		return this.usuarioService.getAcoesInteressadasPorEmail(email);
-	}
-
-	public List<Acao> getListaAcoesCadastradas() {
-		String email = "bruna@gmail.com";//this.usuario.getEmail();
-		return this.usuarioService.getAcoesCadastradasPorEmail(email);
-	}
-
-	public String redirectListener() {
-	    return "/acao/visualizar?faces-redirect=true&id=" + acaoSelecionada.getId();
+	public List<Acao> getAcoesInteressadas() {
+		return usuarioService.getAcoesInteressadasPorEmail("brubs2@gmail.com");
 	}
 	
-/*	public void redirectListener() {
-		ConfigurableNavigationHandler nh = (ConfigurableNavigationHandler) FacesContext.getCurrentInstance().getApplication().getNavigationHandler();
-	    nh.performNavigation("/acao/visualizar?faces-redirect=true&id=" + acaoSelecionada.getId());
-	    acaoSelecionada = null;
-	}*/
-	
+	private String getEmailUsuario() {
+		FacesContext fContext = FacesContext.getCurrentInstance();
+		ExternalContext eContext = fContext.getExternalContext();
+		String email = eContext.getRemoteUser();
+		return email;
+	}
+
 }
