@@ -30,6 +30,7 @@ public class UsuarioBean {
 
 	public String novo() {
 		this.usuario = new Usuario();
+		this.usuario.setStatus(true);;
 		return "/usuario/perfil";
 	}
 

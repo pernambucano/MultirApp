@@ -46,6 +46,27 @@ public class Acao implements Serializable{
 	
 	public Acao(){}
 	
+	
+	
+	public Acao(Usuario usuario, TipoCategoria categoria, String titulo, String descricao, Date dataCadastro,
+			Date dataOcorrencia, String endCep, String endUf, String endCidade, String endRua, String endBairro,
+			TipoStatus status) {
+		this.usuario = usuario;
+		Categoria = categoria;
+		this.titulo = titulo;
+		this.descricao = descricao;
+		this.dataCadastro = dataCadastro;
+		this.dataOcorrencia = dataOcorrencia;
+		this.endCep = endCep;
+		this.endUf = endUf;
+		this.endCidade = endCidade;
+		this.endRua = endRua;
+		this.endBairro = endBairro;
+		this.status = status;
+	}
+
+
+
 	public Acao(String titulo){
 		this.titulo = titulo;
 		interesses = new HashSet<>();
