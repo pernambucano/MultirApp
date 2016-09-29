@@ -1,6 +1,7 @@
 package br.com.grupo4.mutirapp.main;
 
 import java.util.Date;
+import java.util.List;
 
 import br.com.grupo4.mutirapp.model.Acao;
 import br.com.grupo4.mutirapp.model.TipoCategoria;
@@ -57,14 +58,34 @@ public class Teste {
 		
 		// public void cadastrarAcao(Acao acao); - OK
 		
-		Acao acaoTeste = new Acao(u1,TipoCategoria.ANIMAIS,"Limpar a praça", "Precisamos limpar a praça", new Date(), new Date(), "50711340", "PE", "Recife", "Rua orós", "Cordeiro", TipoStatus.EM_ABERTO);
-		as.cadastrarAcao(acaoTeste);
+		Acao acaoTeste1 = new Acao(u1,TipoCategoria.MEIO_AMBIENTE,"Limpar a praça", "Precisamos limpar a praça", new Date(), new Date(), "50711340", "PE", "Recife", "Rua orós", "Cordeiro", TipoStatus.EM_ABERTO);
+		Acao acaoTeste2 = new Acao(u2,TipoCategoria.ANIMAIS,"Alimentar caes de rua", "Precisamos ajudar os animais", new Date(), new Date(), "50711421", "PE", "Recife", "Rua Cordeiro", "Ibura", TipoStatus.EM_ABERTO);
 		
-		// public Acao getAcaoByTitulo(String titulo);
+		as.cadastrarAcao(acaoTeste1);
+		as.cadastrarAcao(acaoTeste2);
+		
+		// public Acao getAcaoByTitulo(String titulo); - OK 
 		
 		System.out.println(as.getAcaoByTitulo("Limpar a praça").getDescricao());
 		
 
-				
+		// public void alterarAcao(Acao acao); - OK
+		
+		Acao acaoTeste2Alt = as.getAcaoByTitulo("Alimentar caes de rua");
+		acaoTeste2Alt.setCategoria(TipoCategoria.OUTROS);
+		as.alterarAcao(acaoTeste2Alt);
+		
+		// public void deleteAcaoByTitulo(String titulo); - OK
+		
+		as.deleteAcaoByTitulo("Alimentar caes de rua");
+		
+		// public List<Acao> listarTodasAcoes();
+		
+		List<Acao> lista = as.listarTodasAcoes();
+		System.out.println("Imprimindo a lista de todas as acoes:");
+		for(Acao a : lista){
+			System.out.println(a.getTitulo());
+		}
+
 	}
 }
