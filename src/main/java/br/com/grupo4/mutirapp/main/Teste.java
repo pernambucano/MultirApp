@@ -58,7 +58,7 @@ public class Teste {
 		
 		// public void cadastrarAcao(Acao acao); - OK
 		
-		Acao acaoTeste1 = new Acao(u1,TipoCategoria.MEIO_AMBIENTE,"Limpar a pra√ßa", "Precisamos limpar a pra√ßa", new Date(1475111860), new Date(1475111860), "50711340", "PE", "Recife", "Rua or√≥s", "Cordeiro", TipoStatus.EM_ABERTO);
+		Acao acaoTeste1 = new Acao(u1,TipoCategoria.MEIO_AMBIENTE,"Limpar a praia", "Precisamos limpar a pra√ßa", new Date(1475111860), new Date(1475111860), "50711340", "PE", "Recife", "Rua or√≥s", "Cordeiro", TipoStatus.EM_ABERTO);
 		Acao acaoTeste2 = new Acao(u2,TipoCategoria.ANIMAIS,"Alimentar caes de rua", "Precisamos ajudar os animais", new Date(1475111864), new Date(1475111864), "50711421", "PE", "Recife", "Rua Cordeiro", "Ibura", TipoStatus.EM_ABERTO);
 		
 		as.cadastrarAcao(acaoTeste1);
@@ -66,7 +66,7 @@ public class Teste {
 		
 		// public Acao getAcaoByTitulo(String titulo); - OK 
 		
-		System.out.println(as.getAcaoByTitulo("Limpar a pra√ßa").getDescricao());
+		System.out.println(as.getAcaoByTitulo("Limpar a praia").getDescricao());
 		
 
 		// public void alterarAcao(Acao acao); - OK
@@ -101,12 +101,43 @@ public class Teste {
 			System.out.println(a.getTitulo());
 		}
 		
-		// public List<Acao> getUltimasAcoes(); 
+		// public List<Acao> getUltimasAcoes();  - OK
 		
 		List<Acao> lista2 = as.getUltimasAcoes(3); // 3 acoes
 		System.out.println("Imprimindo a lista das 3 ultimas acoes:");
 		for(Acao a : lista2){
 			System.out.println(a.getTitulo() + " : " + a.getDataCadastro());
 		}
+		
+		// MÈtodos de Usu·rio que tem relaÁ„o com AÁ„o/Interesse
+		
+		// public List<Acao> getAcoesCadastradasPorEmail(String email); - OK
+		
+		List<Acao> lista3 =  us.getAcoesCadastradasPorEmail(u2.getEmail()); // 3 acoes
+		System.out.println("Imprimindo a lista de acoes criadas por" +  u2.getEmail());
+		for(Acao a : lista3){
+			System.out.println(a.getTitulo() + " : " + a.getDataCadastro());
+		}
+		
+		// Criando interesses
+		
+		// public void inserirInteresse(Usuario usuario, Acao a, Date data);
+		
+		
+		us.inserirInteresse(u2, acaoTeste1, new Date());
+		us.inserirInteresse(u1, acaoTeste3, new Date());
+		us.inserirInteresse(u1, acaoTeste4, new Date());
+		
+
+		
+		
+		// public List<Acao> getAcoesInteressadasPorEmail(String email);
+		
+		List<Acao> lista4 =  us.getAcoesInteressadasPorEmail(u1.getEmail()); // 3 acoes
+		System.out.println("Imprimindo a lista de acoes interessadas por " +  u1.getEmail());
+		for ( Acao a : lista4) {
+			System.out.println(a.getTitulo());
+		}
+		// public void inserirInteresse(Usuario usuario, Acao a, Date data);
 	}
 }

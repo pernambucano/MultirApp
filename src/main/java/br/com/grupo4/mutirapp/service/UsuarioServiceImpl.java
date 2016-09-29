@@ -18,7 +18,7 @@ import br.com.grupo4.mutirapp.model.Usuario;
 public class UsuarioServiceImpl implements UsuarioService {
 
 	private UsuarioDAO usuarioDAO = UsuarioDAOImpl.getInstance();
-
+	private AcaoService as = AcaoServiceImpl.getInstance();
 	private static UsuarioServiceImpl instance;
 
 	public static UsuarioServiceImpl getInstance() {
@@ -51,12 +51,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 
 	@Override
 	public List<Acao> getAcoesCadastradasPorEmail(String email) {
-		return this.usuarioDAO.listarAcoesCriadasPorId(this.usuarioDAO.buscarPorEmail(email).getId());
+		return this.usuarioDAO.listarAcoesCriadasPorId(email);
 	}
 
 	@Override
 	public List<Acao> getAcoesInteressadasPorEmail(String email) {
-		return this.usuarioDAO.listarAcoesInteressadasPorId(this.usuarioDAO.buscarPorEmail(email).getId());
+		return this.usuarioDAO.listarAcoesInteressadasPorId(email);
 	}
 
 	@Override
@@ -65,6 +65,8 @@ public class UsuarioServiceImpl implements UsuarioService {
 		interesse.setUsuario(usuario);
 		interesse.setAcao(a);
 		interesse.setData(data);
+	
 		usuario.getInteresses().add(interesse);
+		usuarioDAO.atualizar(usuario);
 	}
 }
