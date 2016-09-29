@@ -8,15 +8,15 @@
 		<!-- Configuração da conexão com o banco MySQL e dialeto -->
 		<property name="dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://127.0.0.1:3306/testando</property>
+		<property name="connection.url">jdbc:mysql://127.0.0.1:3306/mutirapp</property>
 		<property name="connection.username">root</property>
-		<property name="connection.password">paulo123</property>
+		<property name="connection.password"></property>
 		
 		<!-- Sessão atual do Hibernate deve ser diferente a cada nova thread -->
 		<property name="current_session_context_class">thread</property>
 		
 		<!-- Criação automática da estrutura das tabelas -->
-		<property name="hibernate.hbm2ddl.auto">create</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
 
 
 		<!-- Usando as configurações do C3PO para pool de conexões -->
