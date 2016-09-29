@@ -3,6 +3,8 @@ package br.com.grupo4.mutirapp.service;
 import java.util.Date;
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.transaction.Transactional;
 
 import org.hibernate.exception.ConstraintViolationException;
@@ -10,7 +12,6 @@ import org.springframework.stereotype.Service;
 
 import br.com.grupo4.mutirapp.dao.UsuarioDAO;
 import br.com.grupo4.mutirapp.dao.UsuarioDAOImpl;
-import br.com.grupo4.mutirapp.exception.UsuarioJaCadastradoException;
 import br.com.grupo4.mutirapp.model.Acao;
 import br.com.grupo4.mutirapp.model.Interesse;
 import br.com.grupo4.mutirapp.model.Usuario;
@@ -20,7 +21,6 @@ import br.com.grupo4.mutirapp.model.Usuario;
 public class UsuarioServiceImpl implements UsuarioService {
 
 	private UsuarioDAO usuarioDAO = UsuarioDAOImpl.getInstance();
-	private AcaoService as = AcaoServiceImpl.getInstance();
 	private static UsuarioServiceImpl instance;
 
 	public static UsuarioServiceImpl getInstance() {
@@ -37,12 +37,10 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public void cadastrarUsuario(Usuario usuario) throws UsuarioJaCadastradoException, ConstraintViolationException {
-		try { 
-			this.usuarioDAO.salvar(usuario);
-		}catch (ConstraintViolationException e) {
-			throw new UsuarioJaCadastradoException();
-		}
+	public void cadastrarUsuario(Usuario usuario) throws Exception {
+
+		this.usuarioDAO.salvar(usuario);
+		
 	}
 
 	@Override

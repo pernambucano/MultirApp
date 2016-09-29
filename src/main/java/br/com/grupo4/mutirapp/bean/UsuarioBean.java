@@ -8,7 +8,6 @@ import javax.faces.context.FacesContext;
 import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Component;
 
-import br.com.grupo4.mutirapp.exception.UsuarioJaCadastradoException;
 import br.com.grupo4.mutirapp.model.Usuario;
 import br.com.grupo4.mutirapp.service.UsuarioService;
 import br.com.grupo4.mutirapp.service.UsuarioServiceImpl;
@@ -21,7 +20,7 @@ public class UsuarioBean {
 	private UsuarioService usuarioService = UsuarioServiceImpl.getInstance();
 	private Usuario usuario;
 	private String confirmacaoSenha;
-	
+
 	public UsuarioBean() {
 		this.usuario = new Usuario();
 	}
@@ -32,7 +31,7 @@ public class UsuarioBean {
 
 	public String novo() {
 		this.usuario = new Usuario();
-		
+
 		return "login";
 	}
 
@@ -40,28 +39,36 @@ public class UsuarioBean {
 		return "/usuario/perfil";
 	}
 
-	public String salvar() throws ConstraintViolationException, UsuarioJaCadastradoException {
+	public String salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		String senha = this.usuario.getSenha();
 
 		if (!senha.equals(this.confirmacaoSenha)) {
-			FacesMessage message = new FacesMessage("A senha n√£o foi confirmada corretamente.");
+			FacesMessage message = new FacesMessage("A senha n„o foi confirmada corretamente.");
 			context.addMessage(null, message);
 			return null;
 		}
-		
-		FacesMessage message = new FacesMessage("Opera√ß√£o realizada com sucesso.");
-		context.addMessage(null, message);
-		
+
+		FacesMessage message;
+
 		// P√°gina de retorno
 		String pageReturn = null;
-		
+
 		if (usuario.getId() == 0) {
 			pageReturn = "/login";
 			usuario.setStatus(true);
 		}
 		
-		this.usuarioService.cadastrarUsuario(usuario);
+		try {
+			this.usuarioService.cadastrarUsuario(usuario);
+			message = new FacesMessage("OperaÁ„o realizada com sucesso.");
+			context.addMessage(null, message);
+		} catch (Exception e) {
+			message = new FacesMessage("Usu·rio j· cadastrado!");
+			context.addMessage(null, message);
+			//throw new UsuarioJaCadastradoException();
+			pageReturn = null;
+		}
 		return pageReturn;
 	}
 
@@ -72,7 +79,7 @@ public class UsuarioBean {
 	/*
 	 * Getters e setters
 	 */
-	
+
 	public Usuario getUsuario() {
 		return usuario;
 	}
