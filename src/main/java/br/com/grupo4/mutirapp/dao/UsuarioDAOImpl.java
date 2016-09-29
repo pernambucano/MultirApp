@@ -40,12 +40,18 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	public void salvar(Usuario usuario) throws Exception{
 		if (usuario.getId() == 0) {
 			usuario.getPermissao().add("ROLE_USUARIO"); // Permissão padrão
+		} else if (usuario.getPermissao() == null || usuario.getPermissao().size() == 0) {
+			// Recuperação das permissões do usuário
+//			Session session = sessionFactory.getCurrentSession();
+			Usuario usuarioPermissao = this.buscarPorId(usuario.getId());
+			usuario.setPermissao(usuarioPermissao.getPermissao());
+			// Remoção do contexto persistente
+//			session.evict(usuarioPermissao);
 		}
 
 		Session session = sessionFactory.getCurrentSession();
 
 		try {
-
 			session.getTransaction().begin();
 			session.saveOrUpdate(usuario);
 			session.getTransaction().commit();
@@ -61,12 +67,12 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		Session session = sessionFactory.getCurrentSession();
 
 		// Recuperação das permissões do usuário
-		if (usuario.getPermissao() == null || usuario.getPermissao().size() == 0) {
-			Usuario usuarioPermissao = this.buscarPorId(usuario.getId());
-
-			// Remoção do contexto persistente
-			session.evict(usuarioPermissao);
-		}
+//		if (usuario.getPermissao() == null || usuario.getPermissao().size() == 0) {
+//			Usuario usuarioPermissao = this.buscarPorId(usuario.getId());
+//
+//			// Remoção do contexto persistente
+//			session.evict(usuarioPermissao);
+//		}
 
 		session.getTransaction().begin();
 		session.update(usuario);

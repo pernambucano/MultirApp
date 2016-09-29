@@ -3,9 +3,9 @@ package br.com.grupo4.mutirapp.bean;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Component;
 
 import br.com.grupo4.mutirapp.model.Usuario;
@@ -36,6 +36,13 @@ public class UsuarioBean {
 	}
 
 	public String editar() {
+		FacesContext fContext = FacesContext.getCurrentInstance();
+		ExternalContext eContext = fContext.getExternalContext();
+		String email = eContext.getRemoteUser();
+		
+		this.usuario = this.usuarioService.getUsuarioByEmail(email);
+		System.out.println(this.usuario.getId());
+		
 		return "/usuario/perfil";
 	}
 
@@ -44,7 +51,7 @@ public class UsuarioBean {
 		String senha = this.usuario.getSenha();
 
 		if (!senha.equals(this.confirmacaoSenha)) {
-			FacesMessage message = new FacesMessage("A senha n„o foi confirmada corretamente.");
+			FacesMessage message = new FacesMessage("A senha n√£o foi confirmada corretamente.");
 			context.addMessage(null, message);
 			return null;
 		}
@@ -56,15 +63,18 @@ public class UsuarioBean {
 
 		if (usuario.getId() == 0) {
 			pageReturn = "/login";
-			usuario.setStatus(true);
+			//usuario.setStatus(true);
 		}
+		
+		// Por hora, nenhum usu√°rio ser√° bloqueado
+		usuario.setStatus(true);
 		
 		try {
 			this.usuarioService.cadastrarUsuario(usuario);
-			message = new FacesMessage("OperaÁ„o realizada com sucesso.");
+			message = new FacesMessage("Opera√ß√£o realizada com sucesso.");
 			context.addMessage(null, message);
 		} catch (Exception e) {
-			message = new FacesMessage("Usu·rio j· cadastrado!");
+			message = new FacesMessage("Usu√°rio j√° cadastrado!");
 			context.addMessage(null, message);
 			//throw new UsuarioJaCadastradoException();
 			pageReturn = null;
