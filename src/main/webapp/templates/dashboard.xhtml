@@ -39,7 +39,7 @@
 		        <ul class="nav navbar-nav navbar-right">
 	                <li><a href="/mutirapp/acao/criar.jsf">
 	                    <span class="glyphicon glyphicon-plus"></span> Criar Ação</a></li>
-	                <li><a href="#" onclick="if (!confirm('Tem certeza que deseja sair?')) return false;">
+	                <li><a href="#" onclick="document.location='#{request.contextPath}/j_spring_security_logout'">
 	                    <span class="glyphicon glyphicon-off"></span> Logout</a></li>
 	            </ul>
 		    </div> <!-- /.navbar-collapse -->

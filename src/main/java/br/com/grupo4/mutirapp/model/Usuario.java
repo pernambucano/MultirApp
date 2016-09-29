@@ -6,12 +6,16 @@ import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table(name = "usuario")
@@ -26,6 +30,8 @@ public class Usuario implements Serializable{
 	private boolean status; // not null
 	private Set<Acao> acoes;// not null
 	private Set<Interesse> interesses;// not null
+	
+	private Set<String>	permissao = new HashSet<String>(); 
 	
 	
 	public Usuario(){}
@@ -131,6 +137,20 @@ public class Usuario implements Serializable{
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+	
+	@ElementCollection(targetClass = String.class) 
+	@JoinTable(
+			name="usuario_permissao", 
+			uniqueConstraints = {@UniqueConstraint(columnNames = {"usuario", "permissao"})}, 
+			joinColumns = @JoinColumn(name = "usuario")) 
+	@Column(name = "permissao", length = 50) 
+	public Set<String> getPermissao() {
+		return permissao;
+	}
+
+	public void setPermissao(Set<String> permissao) {
+		this.permissao = permissao;
 	}
 
 

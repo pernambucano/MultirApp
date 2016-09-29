@@ -5,6 +5,10 @@ body {
 	font-size: 100%;
 }
 
+h1 {
+    color: #060 !important;
+}
+
 p.description {
 	font-size: 16px;
 	color: #777777;
@@ -13,6 +17,30 @@ p.description {
 .small-text {
 	color: #777777;
 	text-align: center;
+}
+
+/* LOGIN */
+.box-login {
+	border: 1px solid #ccc;
+	border-radius: 10px;
+	box-shadow: 0 0 5px #ccc;
+	margin: 20px 0;
+	padding: 0 40px 20px;
+}
+
+.box-login label {
+	display: block;
+	font-size: 1.2em;
+}
+
+.box-login .remember {
+	display: inline-block;
+	margin-left: 5px;
+}
+
+.alert ul {
+	list-style: none;
+	padding-left: 0;
 }
 
 /* FILTER */
@@ -516,14 +544,11 @@ p.description {
   color: #DDDDDD;
 } 
 
-.footer-color-black hr {
-  border-color: #444444;
-}
-
 .footer .copyright {
   color: #777777;
   padding: 10px 15px;
   line-height: 20px;
+  margin: 25px 0;
   text-align: center;
 }
 

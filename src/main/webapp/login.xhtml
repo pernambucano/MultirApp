@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:p="http://primefaces.org/ui"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/templates/default_home.xhtml">
+    <ui:define name="title">Login</ui:define>
+
+    <ui:define name="content">
+        <div class="container">
+            <div class="col-md-4 col-md-offset-4 box-login">
+                <h1 class="text-center">Autenticação</h1>
+                <hr />
+                
+                <h:panelGroup rendered="#{!empty param.login_error}">
+                    <div class="alert alert-danger text">
+                        Login inválido
+                    </div>
+                </h:panelGroup>
+                
+                <form id="login" method="post" action="#{request.contextPath}/j_spring_security_check">
+                    <div class="form-group">
+                        <label for="j_username">Login: </label>
+                        <input type="text" id="j_username" name="j_username"
+                            class="form-control" />
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="j_password">Senha: </label>
+                        <input type="password" id="j_password" name="j_password"
+                            class="form-control" />
+                    </div>
+                    
+                    <div class="form-group">
+                        
+                    </div>
+                    
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-primary"
+                            value="Entrar" />
+                        <span class="remember">
+                            <input type="checkbox" name="_spring_security_remember_me"/>
+                            Lembrar de mim
+                        </span>
+                    </div>
+                    
+                    <script>
+                        document.getElementById("login").j_username.value = "#{SPRING_SECURITY_LAST_USERNAME}"; 
+                    </script>
+                </form>
+            </div> <!-- /.col-md-4 -->
+        </div> <!-- /.container -->
+    </ui:define>
+</ui:composition>
+
+</html>
