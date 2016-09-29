@@ -55,11 +55,16 @@ public class Teste {
 		
 		AcaoService as = new AcaoServiceImpl();
 		
-		// public void cadastrarAcao(Acao acao);
+		// public void cadastrarAcao(Acao acao); - OK
 		
 		Acao acaoTeste = new Acao(u1,TipoCategoria.ANIMAIS,"Limpar a praça", "Precisamos limpar a praça", new Date(), new Date(), "50711340", "PE", "Recife", "Rua orós", "Cordeiro", TipoStatus.EM_ABERTO);
 		as.cadastrarAcao(acaoTeste);
 		
+		// public Acao getAcaoByTitulo(String titulo);
+		
+		System.out.println(as.getAcaoByTitulo("Limpar a praça").getDescricao());
+		
+
 				
 	}
 }

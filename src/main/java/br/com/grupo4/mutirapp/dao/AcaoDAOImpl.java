@@ -4,11 +4,14 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.Criteria;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Restrictions;
 
 import br.com.grupo4.mutirapp.model.Acao;
+import br.com.grupo4.mutirapp.model.Usuario;
 import br.com.grupo4.mutirapp.util.HibernateUtil;
 
 public class AcaoDAOImpl implements AcaoDAO {
@@ -68,13 +71,23 @@ public class AcaoDAOImpl implements AcaoDAO {
 	
 	@Transactional
 	public Acao getAcaoById(int id) {
-		return (Acao) sessionFactory.getCurrentSession().get(Acao.class, id); 
+		Session session= sessionFactory.getCurrentSession();
+		session.getTransaction().begin();
+		Acao a = (Acao) sessionFactory.getCurrentSession().get(Acao.class, id);
+		session.getTransaction().commit();
+		return a;
 	}
 
 	@Override
 	@Transactional
 	public Acao buscarPorTitulo(String titulo) {
-		return (Acao) sessionFactory.getCurrentSession().get(Acao.class, titulo); 
+		Session session= sessionFactory.getCurrentSession();
+		session.getTransaction().begin();
+		Criteria criteria = session.createCriteria(Acao.class);
+		criteria.add(Restrictions.eq("titulo", titulo));
+		Acao a = (Acao) criteria.uniqueResult();		
+		session.getTransaction().commit();
+		return a;
 	}
 
 	@Override
