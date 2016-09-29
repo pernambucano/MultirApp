@@ -19,49 +19,61 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 	private SessionFactory sessionFactory;
 	private static UsuarioDAOImpl instance;
-	
+
 	public static UsuarioDAOImpl getInstance(){
 		if (instance == null){
 			instance = new UsuarioDAOImpl();
 		}
-		
+
 		return instance;
 	}
-	
-	
+
+
 	public UsuarioDAOImpl() {
-		
+
 		this.sessionFactory = HibernateUtil.getSessionFactory();
 	}
-	
+
 
 	@Override
 	@Transactional
-	public void salvar(Usuario usuario) {
-		Session session = sessionFactory.getCurrentSession();
-		
+	public void salvar(Usuario usuario) throws Exception{
 		if (usuario.getId() == 0) {
 			usuario.getPermissao().add("ROLE_USUARIO"); // Permissão padrão
+		} else if (usuario.getPermissao() == null || usuario.getPermissao().size() == 0) {
+			// Recuperação das permissões do usuário
+//			Session session = sessionFactory.getCurrentSession();
+			Usuario usuarioPermissao = this.buscarPorId(usuario.getId());
+			usuario.setPermissao(usuarioPermissao.getPermissao());
+			// Remoção do contexto persistente
+//			session.evict(usuarioPermissao);
 		}
-		
-		session.getTransaction().begin();
-		session.saveOrUpdate(usuario);
-		session.getTransaction().commit();
+
+		Session session = sessionFactory.getCurrentSession();
+
+		try {
+			session.getTransaction().begin();
+			session.saveOrUpdate(usuario);
+			session.getTransaction().commit();
+		} catch (Exception e) {
+			session.getTransaction().rollback();
+			throw new Exception();
+		}
 	}
 
 	@Override
 	@Transactional
 	public void atualizar(Usuario usuario) {
 		Session session = sessionFactory.getCurrentSession();
-		
+
 		// Recuperação das permissões do usuário
-		if (usuario.getPermissao() == null || usuario.getPermissao().size() == 0) {
-			Usuario usuarioPermissao = this.buscarPorId(usuario.getId());
-			
-			// Remoção do contexto persistente
-			session.evict(usuarioPermissao);
-		}
-		
+//		if (usuario.getPermissao() == null || usuario.getPermissao().size() == 0) {
+//			Usuario usuarioPermissao = this.buscarPorId(usuario.getId());
+//
+//			// Remoção do contexto persistente
+//			session.evict(usuarioPermissao);
+//		}
+
 		session.getTransaction().begin();
 		session.update(usuario);
 		session.getTransaction().commit();
@@ -74,8 +86,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		session.getTransaction().begin();
 		session.delete(usuario);
 		session.getTransaction().commit();
-		
-		
+
+
 	}
 
 	@Override

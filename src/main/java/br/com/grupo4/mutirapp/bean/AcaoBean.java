@@ -1,5 +1,7 @@
 package br.com.grupo4.mutirapp.bean;
 
+import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -18,7 +20,7 @@ public class AcaoBean {
 	private AcaoService acaoService = AcaoServiceImpl.getInstance();
 	private BuscaCEPService buscaCepService = BuscaCEPServiceImpl.getInstance();
 	private Acao acao;
-	
+	private List<Acao> listaAcoes;
 	
 	public AcaoBean() {
 		this.acao = new Acao();
@@ -27,6 +29,12 @@ public class AcaoBean {
 	/*
 	 * Actions
 	 */
+	
+	public String buscar(String titulo){
+		this.listaAcoes = this.acaoService.getAcoesByTitulo(titulo); 
+		return "/acao/buscar";
+//		return null;
+	}
 
 	public String nova() {
 		this.acao = new Acao();
@@ -70,4 +78,14 @@ public class AcaoBean {
 	public void setAcao(Acao acao) {
 		this.acao = acao;
 	}
+
+	public List<Acao> getListaAcoes() {
+		return listaAcoes;
+	}
+
+	public void setListaAcoes(List<Acao> listaAcoes) {
+		this.listaAcoes = listaAcoes;
+	}
+	
+	
 }

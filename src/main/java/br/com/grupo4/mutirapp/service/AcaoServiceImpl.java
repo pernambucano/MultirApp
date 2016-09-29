@@ -29,7 +29,7 @@ public class AcaoServiceImpl implements AcaoService {
 	}
 
 	@Override
-	public Acao getAcaoByTitulo(String titulo) {
+	public List<Acao> getAcoesByTitulo(String titulo) {
 		return acaoDAO.buscarPorTitulo(titulo);
 	}
 

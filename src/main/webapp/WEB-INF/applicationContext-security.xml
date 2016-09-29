@@ -9,7 +9,7 @@
 		<intercept-url pattern="/acao/**" access="ROLE_USUARIO" />
 		<intercept-url pattern="/usuario/**" access="ROLE_USUARIO" />
 		<form-login login-page="/login.jsf"
-			always-use-default-target="true" default-target-url="/usuario/perfil.jsf"
+			always-use-default-target="true" default-target-url="/acao/buscar.jsf"
 			authentication-failure-url="/login.jsf?login_error=1" />
 		<logout />
 		<remember-me />

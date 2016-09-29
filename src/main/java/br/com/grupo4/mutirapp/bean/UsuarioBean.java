@@ -3,6 +3,7 @@ package br.com.grupo4.mutirapp.bean;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import org.springframework.stereotype.Component;
@@ -19,7 +20,7 @@ public class UsuarioBean {
 	private UsuarioService usuarioService = UsuarioServiceImpl.getInstance();
 	private Usuario usuario;
 	private String confirmacaoSenha;
-	
+
 	public UsuarioBean() {
 		this.usuario = new Usuario();
 	}
@@ -30,11 +31,18 @@ public class UsuarioBean {
 
 	public String novo() {
 		this.usuario = new Usuario();
-		
+
 		return "login";
 	}
 
 	public String editar() {
+		FacesContext fContext = FacesContext.getCurrentInstance();
+		ExternalContext eContext = fContext.getExternalContext();
+		String email = eContext.getRemoteUser();
+		
+		this.usuario = this.usuarioService.getUsuarioByEmail(email);
+		System.out.println(this.usuario.getId());
+		
 		return "/usuario/perfil";
 	}
 
@@ -47,19 +55,30 @@ public class UsuarioBean {
 			context.addMessage(null, message);
 			return null;
 		}
-		
-		FacesMessage message = new FacesMessage("Operação realizada com sucesso.");
-		context.addMessage(null, message);
-		
+
+		FacesMessage message;
+
 		// Página de retorno
 		String pageReturn = null;
-		
+
 		if (usuario.getId() == 0) {
 			pageReturn = "/login";
-			usuario.setStatus(true);
+			//usuario.setStatus(true);
 		}
 		
-		this.usuarioService.cadastrarUsuario(usuario);
+		// Por hora, nenhum usuário será bloqueado
+		usuario.setStatus(true);
+		
+		try {
+			this.usuarioService.cadastrarUsuario(usuario);
+			message = new FacesMessage("Operação realizada com sucesso.");
+			context.addMessage(null, message);
+		} catch (Exception e) {
+			message = new FacesMessage("Usuário já cadastrado!");
+			context.addMessage(null, message);
+			//throw new UsuarioJaCadastradoException();
+			pageReturn = null;
+		}
 		return pageReturn;
 	}
 
@@ -70,7 +89,7 @@ public class UsuarioBean {
 	/*
 	 * Getters e setters
 	 */
-	
+
 	public Usuario getUsuario() {
 		return usuario;
 	}

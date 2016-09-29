@@ -22,13 +22,18 @@ h4.section {
 	color: #fff;
 }
 
-.navbar-mutirapp a:hover, .navbar-mutirapp a:focus {
-	background-color: #040 !important;
-	color: #fff !important;
+.navbar-mutirapp a:hover,
+.navbar-mutirapp a:focus {
+    background-color: #040 !important;
+    color: #fff !important;
 }
 
-.navbar-mutirapp button span {
-	color: #fff !important;
+.navbar-mutirapp .navbar-toggle {
+    border-color: #fff;
+}
+
+.navbar-mutirapp .navbar-toggle .icon-bar {
+    background-color: #fff;
 }
 
 .btn-inside {
@@ -61,8 +66,15 @@ a.btn-success, a.btn-primary, a.btn-danger {
 }
 
 .well {
-	margin: 10px 30px 0 30px ;
+	margin: 20px 0px 0px 70px ;
 	height: 100%;
      color: black;
      background-color: green;
+}
+
+.well .end {
+	margin: 10px 30px 0 30px ;
+	height: 100%;
+     color: black;
+     background-color: #fff;
 }

@@ -7,7 +7,7 @@ import br.com.grupo4.mutirapp.model.Usuario;
 
 public interface UsuarioDAO {
 	
-	public void salvar(Usuario usuario);
+	public void salvar(Usuario usuario) throws Exception;
 	public void atualizar(Usuario usuario);
 	public void excluir(Usuario usuario);
 	public Usuario buscarPorId(Integer id);

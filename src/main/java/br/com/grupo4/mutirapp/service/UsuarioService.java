@@ -3,6 +3,7 @@ package br.com.grupo4.mutirapp.service;
 import java.util.Date;
 import java.util.List;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Component;
 
 import br.com.grupo4.mutirapp.model.Acao;
@@ -11,7 +12,7 @@ import br.com.grupo4.mutirapp.model.Usuario;
 @Component
 public interface UsuarioService {
 	public Usuario getUsuarioByEmail(String email);
-	public void cadastrarUsuario(Usuario usuario);
+	public void cadastrarUsuario(Usuario usuario) throws ConstraintViolationException, Exception;
 	public void alterarUsuario(Usuario usuario);
 	public void deleteUsuarioByEmail(String email);
 	public List<Acao> getAcoesCadastradasPorEmail(String email);
