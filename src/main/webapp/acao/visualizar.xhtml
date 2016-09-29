@@ -1,63 +1,137 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:f="http://xmlns.jcp.org/jsf/core"
-    xmlns:p="http://primefaces.org/ui"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    
-<ui:composition template="/templates/dashboard.xhtml">
-    <ui:define name="title">Ação X</ui:define>
-    
-    <ui:define name="content">
-        <h:form>
-            <p class="text-center">
-                <h:commandButton value="Tenho interesse!"
-                    class="btn btn-lg btn-success" />
-	        </p>
-        </h:form>
-        
-        <div class="row">
-            <div class="col-md-4">
-                <h4 class="section">Status</h4>
-                <p><h:outputText value="Status" /></p>
-                <h4 class="section">Categoria</h4>
-                <p><h:outputText value="Categoria" /></p>
-                <h4 class="section">Título</h4>
-                <p><h:outputText value="Título" /></p>
-                <h4 class="section">Descrição</h4>
-                <p><h:outputText value="Descrição" /></p>
-                <h4 class="section">Data de cadastro</h4>
-                <p><h:outputText value="Data de cadastro" /></p>
-                <h4 class="section">Data de ocorrência</h4>
-                <p><h:outputText value="Data de ocorrência" /></p>
-            </div> <!-- /.col-md-4 -->
-            <div class="col-md-4">
-                <h4 class="section">CEP</h4>
-                <p><h:outputText value="CEP" /></p>
-                <h4 class="section">UF</h4>
-                <p><h:outputText value="UF" /></p>
-                <h4 class="section">Cidade</h4>
-                <p><h:outputText value="Cidade" /></p>
-                <h4 class="section">Rua</h4>
-                <p><h:outputText value="Rua" /></p>
-                <h4 class="section">Bairro</h4>
-                <p><h:outputText value="Bairro" /></p>
-                <h4 class="section">Referência</h4>
-                <p><h:outputText value="Referência" /></p>
-            </div> <!-- /.col-md-4 -->
-            <div class="col-md-4">
-                <h4 class="section">Observações</h4>
-                <p><h:outputText value="Observações" /></p>
-            </div> <!-- /.col-md-4 -->
-        </div> <!-- /.row -->
-        
-        <h:form>
-            <p class="text-center">
-                <h:commandButton value="Tenho interesse!"
-                    class="btn btn-lg btn-success" />
-            </p>
-        </h:form>
-    </ui:define>
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<ui:composition template="/templates/dashboard_acao.xhtml">
+	<ui:define name="title">Ação X</ui:define>
+
+	<ui:define name="content">
+		<div class="jumbotron">
+			<div class="container">
+				<div class="content">
+					<h1>Nome da Ação</h1>
+					<p>
+						<h:outputText value="Meio-ambiente" />
+					</p>
+				</div>
+			</div>
+
+		</div>
+		<div class="row">
+
+			<h:form>
+				<p class="text-center">
+					<h:commandButton value="Tenho interesse!"
+						class="btn btn-lg btn-success" />
+				</p>
+			</h:form>
+		</div>
+		<div class="row">
+			<div class="col-md-6">
+				<div class="well">
+
+					<p>
+						<label>Publicado por:</label>
+						<h:outputText value="  Nome da pessoa" />
+						<br />
+						<label>E-mail:</label>
+						<h:outputText value="brubs@gmail.com" />
+						<br />
+						<h:outputText value="20/06/2016" />
+					</p>
+
+					<h4 class="section">Status</h4>
+					<p>
+						<h:outputText value="Em aberto" />
+					</p>
+					<h4 class="section">Informações</h4>
+					<p>
+						<h:outputText
+							value="Aqui é Body Builder Ipsum PORRA! Sai de casa comi pra caralho porra. Aqui nóis constrói fibra, não é água com músculo. Que não vai dá rapaiz, não vai dá essa porra. Vo derrubar tudo essas árvore do parque ibirapuera. Tá comigo porra. Birl!
+
+Não vai dá não. AHHHHHHHHHHHHHHHHHHHHHH..., porra! Birl! Eita porra!, tá saindo da jaula o monstro! Ajuda o maluco que tá doente. Negativa Bambam negativa.
+
+Bora caralho, você quer ver essa porra velho. Vai subir árvore é o caralho porra! Que não vai dá rapaiz, não vai dá essa porra. É 37 anos caralho! Ó o homem ali porra!, é 13 porra! Sabe o que é isso daí? Trapézio descendente é o nome disso aí.
+
+Ó o homem ali porra!, é 13 porra! Birl! Eu quero esse 13 daqui a pouquinho aí. Aqui nóis constrói fibra, não é água com músculo. Vem porra! Boraaa, Hora do Show Porra.
+
+É verão o ano todo vem cumpadi. Eu quero esse 13 daqui a pouquinho aí. Aqui nóis constrói fibra, não é água com músculo. Eita porra!, tá saindo da jaula o monstro! Tá comigo porra. É 13 porra!Aqui é Body Builder Ipsum PORRA! Sai de casa comi pra caralho porra. Aqui nóis constrói fibra, não é água com músculo. Que não vai dá rapaiz, não vai dá essa porra. Vo derrubar tudo essas árvore do parque ibirapuera. Tá comigo porra. Birl!
+
+Não vai dá não. AHHHHHHHHHHHHHHHHHHHHHH..., porra! Birl! Eita porra!, tá saindo da jaula o monstro! Ajuda o maluco que tá doente. Negativa Bambam negativa.
+
+Bora caralho, você quer ver essa porra velho. Vai subir árvore é o caralho porra! Que não vai dá rapaiz, não vai dá essa porra. É 37 anos caralho! Ó o homem ali porra!, é 13 porra! Sabe o que é isso daí? Trapézio descendente é o nome disso aí.
+
+Ó o homem ali porra!, é 13 porra! Birl! Eu quero esse 13 daqui a pouquinho aí. Aqui nóis constrói fibra, não é água com músculo. Vem porra! Boraaa, Hora do Show Porra.
+
+É verão o ano todo vem cumpadi. Eu quero esse 13 daqui a pouquinho aí. Aqui nóis constrói fibra, não é água com músculo. Eita porra!, tá saindo da jaula o monstro! Tá comigo porra. É 13 porra!" />
+					</p>
+				</div>
+			</div>
+			<div class="col-md-5">
+				<div class="row">
+					<div class="well">
+						<h4 class="section">Quando vai ser?</h4>
+						<p>
+							<label>Data da ação: </label>
+							<h:outputText value="26/06/2016" />
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="well">
+						<h4 class="section">Onde vai ser?</h4>
+						<p>
+							<h:outputText value="#{acaoBean.acao.endUf}" />
+						</p>
+						<p>
+							<h:outputText value="#{acaoBean.acao.endCidade}" />
+						</p>
+						<p>
+							<h:outputText value="#{acaoBean.acao.endBairro}" />
+						</p>
+						<p>
+							<h:outputText value="#{acaoBean.acao.endRua}" />
+						</p>
+						<p>
+							<h:outputText value="#{acaoBean.acao.endCep}" />
+						</p>
+						<p>
+							<h:outputText value="#{acaoBean.acao.endReferencia}" />
+						</p>
+					</div>
+				</div>
+				<div class="row">
+					<div class="well">
+						<h4 class="section">Observações</h4>
+						<p>
+							<h:outputText value="Aqui é Body Builder Ipsum PORRA! Sai de casa comi pra caralho porra. Aqui nóis constrói fibra, não é água com músculo. Que não vai dá rapaiz, não vai dá essa porra. Vo derrubar tudo essas árvore do parque ibirapuera. Tá comigo porra. Birl!
+
+Não vai dá não. AHHHHHHHHHHHHHHHHHHHHHH..., porra! Birl! Eita porra!, tá saindo da jaula o monstro! Ajuda o maluco que tá doente. Negativa Bambam negativa.
+
+Bora caralho, você quer ver essa porra velho. Vai subir árvore é o caralho porra! Que não vai dá rapaiz, não vai dá essa porra. É 37 anos caralho! Ó o homem ali porra!, é 13 porra! Sabe o que é isso daí? Trapézio descendente é o nome disso aí.
+
+Ó o homem ali porra!, é 13 porra! Birl! Eu quero esse 13 daqui a pouquinho aí. Aqui nóis constrói fibra, não é água com músculo. Vem porra! Boraaa, Hora do Show Porra.
+
+Bora caralho, você quer ver essa porra velho. Vai subir árvore é o caralho porra! Que não vai dá rapaiz, não vai dá essa porra. É 37 anos caralho! Ó o homem ali porra!, é 13 porra! Sabe o que é isso daí? Trapézio descendente é o nome disso aí.
+omigo porra. É 13 porra!" />
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<h:form>
+				<p class="text-center">
+					<h:commandButton value="Tenho interesse!"
+						class="btn btn-lg btn-success" />
+				</p>
+			</h:form>
+		</div>
+	</ui:define>
 </ui:composition>
 
 </html>
