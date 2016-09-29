@@ -28,7 +28,7 @@ public class AcaoBean {
 	 */
 	
 	public String buscar(String titulo){
-		this.listaAcoes = this.acaoService.listarTodasAcoes(); 
+		this.listaAcoes = this.acaoService.getAcoesByTitulo(titulo); 
 		return "/acao/buscar";
 //		return null;
 	}
