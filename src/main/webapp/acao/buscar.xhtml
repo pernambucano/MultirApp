@@ -46,8 +46,13 @@
             <p:column headerText="Ações" styleClass="text-center">
                 <a href="/mutirapp/acao/visualizar.jsf" title="Editar" class="btn btn-xs btn-primary">
                     <span class="glyphicon glyphicon-new-window"></span> Visualizar</a>
-                <a href="#" title="Editar" class="btn btn-xs btn-success">
-                    <span class="glyphicon glyphicon-ok"></span> Interessado</a>
+               <!--  <a href="#" title="Editar" class="btn btn-xs btn-success">
+                    <span class="glyphicon glyphicon-ok"></span> Interessado</a> -->
+                    
+            <p:link value="Edit" class="btn btn-xs btn-success" outcome="/acao/visualizar">
+            <ui:param name="id" value="#{acoes.id}" />
+           
+        </p:link>
             </p:column>
 		</p:dataTable>
     </ui:define>

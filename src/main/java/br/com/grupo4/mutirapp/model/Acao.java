@@ -37,7 +37,7 @@ public class Acao implements Serializable, Comparable<Acao>{
 	private String endCep;//not null
 	private String endUf;//not null
 	private String endCidade;//not null
-	private String endLogradouroTipo;//not null
+	private String endLogradouroTipo;
 	private String endLogradouro;//not null
 	private String endBairro;//not null
 	private String endReferencia; // null
