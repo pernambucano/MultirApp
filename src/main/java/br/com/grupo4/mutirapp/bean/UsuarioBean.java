@@ -30,8 +30,8 @@ public class UsuarioBean {
 
 	public String novo() {
 		this.usuario = new Usuario();
-		this.usuario.setStatus(true);;
-		return "/usuario/perfil";
+		
+		return "login";
 	}
 
 	public String editar() {
@@ -51,12 +51,16 @@ public class UsuarioBean {
 		FacesMessage message = new FacesMessage("Operação realizada com sucesso.");
 		context.addMessage(null, message);
 		
-//		UsuarioRN usuarioRN = new UsuarioRN();
-//		usuarioRN.salvar(usuario);
-		System.out.println("UB: " + this.usuarioService);
-		System.out.println("UB: " + this.usuario);
+		// Página de retorno
+		String pageReturn = null;
+		
+		if (usuario.getId() == 0) {
+			pageReturn = "/login";
+			usuario.setStatus(true);
+		}
+		
 		this.usuarioService.cadastrarUsuario(usuario);
-		return null;
+		return pageReturn;
 	}
 
 	public String excluir() {

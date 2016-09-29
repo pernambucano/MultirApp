@@ -38,6 +38,11 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	@Transactional
 	public void salvar(Usuario usuario) {
 		Session session = sessionFactory.getCurrentSession();
+		
+		if (usuario.getId() == 0) {
+			usuario.getPermissao().add("ROLE_USUARIO"); // Permissão padrão
+		}
+		
 		session.getTransaction().begin();
 		session.saveOrUpdate(usuario);
 		session.getTransaction().commit();
@@ -47,6 +52,15 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 	@Transactional
 	public void atualizar(Usuario usuario) {
 		Session session = sessionFactory.getCurrentSession();
+		
+		// Recuperação das permissões do usuário
+		if (usuario.getPermissao() == null || usuario.getPermissao().size() == 0) {
+			Usuario usuarioPermissao = this.buscarPorId(usuario.getId());
+			
+			// Remoção do contexto persistente
+			session.evict(usuarioPermissao);
+		}
+		
 		session.getTransaction().begin();
 		session.saveOrUpdate(usuario);
 		session.getTransaction().commit();
