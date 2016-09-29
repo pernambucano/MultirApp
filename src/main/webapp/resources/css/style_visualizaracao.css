@@ -22,13 +22,18 @@ h4.section {
 	color: #fff;
 }
 
-.navbar-mutirapp a:hover, .navbar-mutirapp a:focus {
-	background-color: #040 !important;
-	color: #fff !important;
+.navbar-mutirapp a:hover,
+.navbar-mutirapp a:focus {
+    background-color: #040 !important;
+    color: #fff !important;
 }
 
-.navbar-mutirapp button span {
-	color: #fff !important;
+.navbar-mutirapp .navbar-toggle {
+    border-color: #fff;
+}
+
+.navbar-mutirapp .navbar-toggle .icon-bar {
+    background-color: #fff;
 }
 
 .btn-inside {

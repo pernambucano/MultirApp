@@ -29,8 +29,12 @@ h4.section {
 	color: #fff !important;
 }
 
-.navbar-mutirapp button span {
-	color: #fff !important;
+.navbar-mutirapp .navbar-toggle {
+    border-color: #fff;
+}
+
+.navbar-mutirapp .navbar-toggle .icon-bar {
+    background-color: #fff;
 }
 
 .btn-inside {
@@ -67,5 +71,4 @@ a.btn-danger {
 .ui-widget-header .ui-corner-all {
 	border: none;
 }
-
 
