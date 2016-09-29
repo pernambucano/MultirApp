@@ -5,7 +5,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Component;
 
 import br.com.grupo4.mutirapp.model.Usuario;
@@ -44,7 +43,7 @@ public class UsuarioBean {
 		String senha = this.usuario.getSenha();
 
 		if (!senha.equals(this.confirmacaoSenha)) {
-			FacesMessage message = new FacesMessage("A senha n„o foi confirmada corretamente.");
+			FacesMessage message = new FacesMessage("A senha n√£o foi confirmada corretamente.");
 			context.addMessage(null, message);
 			return null;
 		}
@@ -61,10 +60,10 @@ public class UsuarioBean {
 		
 		try {
 			this.usuarioService.cadastrarUsuario(usuario);
-			message = new FacesMessage("OperaÁ„o realizada com sucesso.");
+			message = new FacesMessage("Opera√ß√£o realizada com sucesso.");
 			context.addMessage(null, message);
 		} catch (Exception e) {
-			message = new FacesMessage("Usu·rio j· cadastrado!");
+			message = new FacesMessage("Usu√°rio j√° cadastrado!");
 			context.addMessage(null, message);
 			//throw new UsuarioJaCadastradoException();
 			pageReturn = null;
