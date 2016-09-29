@@ -67,10 +67,20 @@
 						<!-- Data de Cadastro -->
 						<div class="col-md-6">
 							<div class="form-group">
+
+								<!--<h:outputText value="Data de cadastro: " />
+								<p:inputMask id="data"
+									value="#{registroBean.registroSelecionado.data}"
+									mask="99/99/9999" size="8" required="true"
+									requiredMessage="Informe a DATA">
+									<p:ajax event="blur" listener="#{registroBean.dataAtual}"
+										process="data" update="data" />
+								</p:inputMask>-->
+								
 								<p:outputLabel for="dataCadastro" value="Data de cadastro: "
 									styleClass="control-label text-center" />
 								<p:inputText id="dataCadastro"
-									value="#{acaoBean.acao.dataCadastro}"
+									value="#{acaoBean.data}"
 									styleClass="form-control date-picker" required="true">
 									<f:convertDateTime pattern="dd/MM/yyyy" />
 								</p:inputText>
@@ -176,7 +186,7 @@
 									styleClass="control-label text-center" />
 								<p:inputText id="endReferencia"
 									value="#{acaoBean.acao.endReferencia}"
-									styleClass="form-control" required="true" />
+									styleClass="form-control" />
 							</div>
 							<!-- /.form-group -->
 						</div>
@@ -189,8 +199,7 @@
 						<p:outputLabel for="observacoes" value="Observações: "
 							styleClass="control-label text-center" />
 						<p:inputTextarea id="observacoes"
-							value="#{acaoBean.acao.observacoes}" styleClass="form-control"
-							required="true" />
+							value="#{acaoBean.acao.observacoes}" styleClass="form-control" />
 					</div>
 					<!-- /.form-group -->
 
