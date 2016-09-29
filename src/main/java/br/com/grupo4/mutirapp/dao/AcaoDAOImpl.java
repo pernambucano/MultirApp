@@ -80,24 +80,24 @@ public class AcaoDAOImpl implements AcaoDAO {
 
 	@Override
 	@Transactional
-	public Acao buscarPorTitulo(String titulo) {
+	public List<Acao> buscarPorTitulo(String titulo) {
 		Session session = sessionFactory.getCurrentSession();
 		session.getTransaction().begin();
 		Criteria criteria = session.createCriteria(Acao.class);
-		criteria.add(Restrictions.eq("titulo", titulo));
-		Acao a = (Acao) criteria.uniqueResult();
+		criteria.add(Restrictions.like("titulo", "%"+titulo+"%"));
+		List<Acao> lista = (List<Acao>) criteria.list();
 		session.getTransaction().commit();
-		return a;
+		return lista;
 	}
 
 	@Override
 	@Transactional
 	public void deleteAcaoByTitulo(String titulo) {
-		Acao a = this.buscarPorTitulo(titulo);
-		Session session = sessionFactory.getCurrentSession();
-		session.getTransaction().begin();
-		session.delete(a);
-		session.getTransaction().commit();
+//		Acao a = this.buscarPorTitulo(titulo);
+//		Session session = sessionFactory.getCurrentSession();
+//		session.getTransaction().begin();
+//		session.delete(a);
+//		session.getTransaction().commit();
 	}
 
 	@SuppressWarnings("unchecked")
