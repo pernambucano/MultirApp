@@ -58,8 +58,8 @@ public class Teste {
 		
 		// public void cadastrarAcao(Acao acao); - OK
 		
-		Acao acaoTeste1 = new Acao(u1,TipoCategoria.MEIO_AMBIENTE,"Limpar a praia", "Precisamos limpar a praÃ§a", new Date(1475111860), new Date(1475111860), "50711340", "PE", "Recife", "Rua orÃ³s", "Cordeiro", TipoStatus.EM_ABERTO);
-		Acao acaoTeste2 = new Acao(u2,TipoCategoria.ANIMAIS,"Alimentar caes de rua", "Precisamos ajudar os animais", new Date(1475111864), new Date(1475111864), "50711421", "PE", "Recife", "Rua Cordeiro", "Ibura", TipoStatus.EM_ABERTO);
+		Acao acaoTeste1 = new Acao(u1,TipoCategoria.MEIO_AMBIENTE,"Limpar a praia", "Precisamos limpar a praÃ§a", new Date(1475111860), new Date(1475111860), "50711340", "PE", "Recife", "Rua", "OrÃ³s", "Cordeiro", TipoStatus.EM_ABERTO);
+		Acao acaoTeste2 = new Acao(u2,TipoCategoria.ANIMAIS,"Alimentar caes de rua", "Precisamos ajudar os animais", new Date(1475111864), new Date(1475111864), "50711421", "PE", "Recife", "Rua", "Cordeiro", "Ibura", TipoStatus.EM_ABERTO);
 		
 		as.cadastrarAcao(acaoTeste1);
 		as.cadastrarAcao(acaoTeste2);
@@ -81,10 +81,10 @@ public class Teste {
 		
 		// Cadastrando acao de novo pra ter mais dados pros prÃ³ximos testes
 		
-		Acao acaoTeste3 = new Acao(u2,TipoCategoria.ANIMAIS,"Alimentar caes de rua", "Precisamos ajudar os animais", new Date(1475111864), new Date(1475111864), "50711421", "PE", "Recife", "Rua Cordeiro", "Ibura", TipoStatus.EM_ABERTO);
-		Acao acaoTeste4 = new Acao(u2,TipoCategoria.ANIMAIS,"Alimentar gatos de rua", "Precisamos ajudar os animais", new Date(1475211885), new Date(1475111885), "50711432", "PE", "Recife", "Rua Cavalo", "Entrapusso", TipoStatus.EM_ABERTO);
-		Acao acaoTeste5 = new Acao(u2,TipoCategoria.ANIMAIS,"Alimentar lagartos de rua", "Precisamos ajudar os animais", new Date(1475311900), new Date(1475111900), "50743421", "PE", "Recife", "Rua Aligator", "Coque", TipoStatus.EM_ABERTO);
-		Acao acaoTeste6 = new Acao(u2,TipoCategoria.ANIMAIS,"Alimentar girafas de rua", "Precisamos ajudar os animais", new Date(1475411909), new Date(1475111909), "50711651", "PE", "Recife", "Rua Gato", "Centro", TipoStatus.EM_ABERTO);
+		Acao acaoTeste3 = new Acao(u2,TipoCategoria.ANIMAIS,"Alimentar caes de rua", "Precisamos ajudar os animais", new Date(1475111864), new Date(1475111864), "50711421", "PE", "Recife", "Rua", "Cordeiro", "Ibura", TipoStatus.EM_ABERTO);
+		Acao acaoTeste4 = new Acao(u2,TipoCategoria.ANIMAIS,"Alimentar gatos de rua", "Precisamos ajudar os animais", new Date(1475211885), new Date(1475111885), "50711432", "PE", "Recife", "Rua", "Cavalo", "Entrapusso", TipoStatus.EM_ABERTO);
+		Acao acaoTeste5 = new Acao(u2,TipoCategoria.ANIMAIS,"Alimentar lagartos de rua", "Precisamos ajudar os animais", new Date(1475311900), new Date(1475111900), "50743421", "PE", "Recife", "Rua", "Aligator", "Coque", TipoStatus.EM_ABERTO);
+		Acao acaoTeste6 = new Acao(u2,TipoCategoria.ANIMAIS,"Alimentar girafas de rua", "Precisamos ajudar os animais", new Date(1475411909), new Date(1475111909), "50711651", "PE", "Recife", "Rua", "Gato", "Centro", TipoStatus.EM_ABERTO);
 
 		as.cadastrarAcao(acaoTeste3);
 		as.cadastrarAcao(acaoTeste4);
@@ -109,7 +109,7 @@ public class Teste {
 			System.out.println(a.getTitulo() + " : " + a.getDataCadastro());
 		}
 		
-		// Métodos de Usuário que tem relação com Ação/Interesse
+		// Mï¿½todos de Usuï¿½rio que tem relaï¿½ï¿½o com Aï¿½ï¿½o/Interesse
 		
 		// public List<Acao> getAcoesCadastradasPorEmail(String email); - OK
 		

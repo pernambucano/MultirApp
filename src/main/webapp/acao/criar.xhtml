@@ -9,8 +9,8 @@
 	<ui:define name="title">Criar Ação</ui:define>
 
 	<ui:define name="content">
-		<h:form acceptcharset="UTF-8">
-			<div class="row">
+		<div class="row">
+			<h:form acceptcharset="UTF-8">
 				<div class="col-md-6">
 					<div class="row">
 						<div class="col-md-6">
@@ -96,17 +96,37 @@
 					</div>
 					<!-- /.row -->
 				</div>
-				<!-- /.col-md-6 -->
-
-				<div class="col-md-6">
-					<div class="row">
+			</h:form>
+			<div class="col-md-6">
+				<div class="row">
+					<h:form>
+						<!-- CEP -->
 						<div class="col-md-6">
-							<!-- CEP -->
 							<div class="form-group">
 								<p:outputLabel for="endCep" value="CEP: "
 									styleClass="control-label text-center" />
 								<p:inputMask id="endCep" value="#{acaoBean.acao.endCep}"
 									styleClass="form-control" required="true" mask="99999-999" />
+								<h:commandButton value="Buscar" action="#{acaoBean.buscarCep}"
+									styleClass="btn btn-lg btn-primary pull-right">
+								</h:commandButton>
+							</div>
+						</div>
+						<!-- /.form-group -->
+					</h:form>
+				</div>
+			</div>
+			<h:form>
+				<!-- /.col-md-6 -->
+				<div class="col-md-6">
+					<div class="row">
+						<div class="col-md-6">
+							<!-- Cidade -->
+							<div class="form-group">
+								<p:outputLabel for="endCidade" value="Cidade: "
+									styleClass="control-label text-center" />
+								<p:inputText id="endCidade" value="#{acaoBean.acao.endCidade}"
+									styleClass="form-control" required="true" />
 							</div>
 							<!-- /.form-group -->
 						</div>
@@ -117,45 +137,22 @@
 							<div class="form-group">
 								<p:outputLabel for="endUf" value="UF: "
 									styleClass="control-label text-center" />
-								<h:selectOneMenu id="endUf" styleClass="form-control"
-									value="#{acaoBean.acao.endUf}" required="true">
-									<f:selectItem itemLabel="" itemValue="" />
-									<f:selectItem itemLabel="PE" itemValue="PE" />
-								</h:selectOneMenu>
-							</div>
-							<!-- /.form-group -->
-						</div>
-						<!-- /.col-md-6 -->
-					</div>
-					<!-- /.row -->
-
-					<div class="row">
-						<div class="col-md-6">
-							<!-- Cidade -->
-							<div class="form-group">
-								<p:outputLabel for="endCidade" value="Cidade: "
-									styleClass="control-label text-center" />
-								<h:selectOneMenu id="endCidade" styleClass="form-control"
-									value="#{acaoBean.acao.endCidade}" required="true">
-									<f:selectItem itemLabel="" itemValue="" />
-									<f:selectItem itemLabel="Recife" itemValue="Recife" />
-								</h:selectOneMenu>
-							</div>
-							<!-- /.form-group -->
-						</div>
-						<!-- /.col-md-6 -->
-
-						<div class="col-md-6">
-							<!-- Rua -->
-							<div class="form-group">
-								<p:outputLabel for="endRua" value="Rua: "
-									styleClass="control-label text-center" />
-								<p:inputText id="endRua" value="#{acaoBean.acao.endRua}"
+								<p:inputText id="endUf" value="#{acaoBean.acao.endUf}"
 									styleClass="form-control" required="true" />
 							</div>
 							<!-- /.form-group -->
 						</div>
-						<!-- /.col-md-6 -->
+
+						<div class="col-md-12">
+							<!-- Rua -->
+							<div class="form-group">
+								<p:outputLabel for="endLogradouro" value="Logradouro: "
+									styleClass="control-label text-center" />
+								<p:inputText id="endLogradouro" value="#{acaoBean.acao.endLogradouro}"
+									styleClass="form-control" required="true" />
+							</div>
+							<!-- /.form-group -->
+						</div>
 					</div>
 					<!-- /.row -->
 
@@ -204,14 +201,14 @@
 				<div class="form-group col-md-12">
 					<h:commandButton value="Salvar" action="#{acaoBean.salvar}"
 						styleClass="btn btn-lg btn-primary pull-right">
-						</h:commandButton>
-						
-						<a href="/mutirapp/acoes/"
-							class="btn btn-lg btn-default pull-left"> Voltar</a>
+					</h:commandButton>
+
+					<a href="/mutirapp/acoes/" class="btn btn-lg btn-default pull-left">
+						Voltar</a>
 				</div>
-			</div>
-			<!-- /.row -->
-		</h:form>
+			</h:form>
+		</div>
+		<!-- /.row -->
 	</ui:define>
 </ui:composition>
 
