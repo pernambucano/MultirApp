@@ -5,10 +5,12 @@ import java.util.List;
 
 import javax.transaction.Transactional;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Service;
 
 import br.com.grupo4.mutirapp.dao.UsuarioDAO;
 import br.com.grupo4.mutirapp.dao.UsuarioDAOImpl;
+import br.com.grupo4.mutirapp.exception.UsuarioJaCadastradoException;
 import br.com.grupo4.mutirapp.model.Acao;
 import br.com.grupo4.mutirapp.model.Interesse;
 import br.com.grupo4.mutirapp.model.Usuario;
@@ -35,8 +37,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 	}
 
 	@Override
-	public void cadastrarUsuario(Usuario usuario) {
-		this.usuarioDAO.salvar(usuario);
+	public void cadastrarUsuario(Usuario usuario) throws UsuarioJaCadastradoException, ConstraintViolationException {
+		try { 
+			this.usuarioDAO.salvar(usuario);
+		}catch (ConstraintViolationException e) {
+			throw new UsuarioJaCadastradoException();
+		}
 	}
 
 	@Override

@@ -5,8 +5,10 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
+import org.hibernate.exception.ConstraintViolationException;
 import org.springframework.stereotype.Component;
 
+import br.com.grupo4.mutirapp.exception.UsuarioJaCadastradoException;
 import br.com.grupo4.mutirapp.model.Usuario;
 import br.com.grupo4.mutirapp.service.UsuarioService;
 import br.com.grupo4.mutirapp.service.UsuarioServiceImpl;
@@ -38,7 +40,7 @@ public class UsuarioBean {
 		return "/usuario/perfil";
 	}
 
-	public String salvar() {
+	public String salvar() throws ConstraintViolationException, UsuarioJaCadastradoException {
 		FacesContext context = FacesContext.getCurrentInstance();
 		String senha = this.usuario.getSenha();
 
