@@ -122,7 +122,7 @@ public class UsuarioBean {
 	}
 
 	public List<Acao> getAcoesInteressadas() {
-		return usuarioService.getAcoesInteressadasPorEmail("brubs2@gmail.com");
+		return usuarioService.getAcoesInteressadasPorEmail(getEmailUsuario());
 	}
 	
 	private String getEmailUsuario() {

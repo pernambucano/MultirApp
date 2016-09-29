@@ -1,7 +1,6 @@
 package br.com.grupo4.mutirapp.model;
 
 import java.io.Serializable;
-import java.util.Arrays;
 import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
