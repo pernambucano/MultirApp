@@ -1,20 +1,7 @@
 package br.com.grupo4.mutirapp.main;
 
-import java.util.Date;
-import java.util.List;
-
-import org.hibernate.exception.ConstraintViolationException;
-
-import br.com.grupo4.mutirapp.model.Acao;
-import br.com.grupo4.mutirapp.model.TipoCategoria;
-import br.com.grupo4.mutirapp.model.TipoStatus;
-import br.com.grupo4.mutirapp.model.Usuario;
-import br.com.grupo4.mutirapp.service.AcaoService;
-import br.com.grupo4.mutirapp.service.AcaoServiceImpl;
-import br.com.grupo4.mutirapp.service.UsuarioService;
-import br.com.grupo4.mutirapp.service.UsuarioServiceImpl;
-
 public class Teste {
+
 	public static void main(String[] args) throws Exception {
 //		
 //		// Testando métodos do service de Usuário
