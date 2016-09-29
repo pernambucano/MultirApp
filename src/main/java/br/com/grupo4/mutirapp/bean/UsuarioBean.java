@@ -3,6 +3,7 @@ package br.com.grupo4.mutirapp.bean;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import org.springframework.stereotype.Component;
@@ -35,6 +36,13 @@ public class UsuarioBean {
 	}
 
 	public String editar() {
+		FacesContext fContext = FacesContext.getCurrentInstance();
+		ExternalContext eContext = fContext.getExternalContext();
+		String email = eContext.getRemoteUser();
+		
+		this.usuario = this.usuarioService.getUsuarioByEmail(email);
+		System.out.println(this.usuario.getId());
+		
 		return "/usuario/perfil";
 	}
 
@@ -55,8 +63,11 @@ public class UsuarioBean {
 
 		if (usuario.getId() == 0) {
 			pageReturn = "/login";
-			usuario.setStatus(true);
+			//usuario.setStatus(true);
 		}
+		
+		// Por hora, nenhum usuário será bloqueado
+		usuario.setStatus(true);
 		
 		try {
 			this.usuarioService.cadastrarUsuario(usuario);
