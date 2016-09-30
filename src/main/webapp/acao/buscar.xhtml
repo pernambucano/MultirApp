@@ -1,71 +1,83 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
-    xmlns:h="http://xmlns.jcp.org/jsf/html"
-    xmlns:f="http://xmlns.jcp.org/jsf/core"
-    xmlns:p="http://primefaces.org/ui"
-    xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
-    
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:c="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
 <ui:composition template="/templates/dashboard.xhtml">
 
-    <ui:define name="content">
-    <div class="jumbotron">
+	<ui:define name="content">
+		<div class="jumbotron">
 			<div class="container">
 				<div class="content">
 					<h1>Buscar Ações</h1>
 				</div>
 			</div>
 		</div>
-    <div class="content-mutirapp">
-        <div class="row">
-            <h:form styleClass="col-md-6 col-md-offset-3" acceptcharset="UTF-8">
-	            <!-- Nome -->
-	            <div class="form-group">
-	                <p:inputText id="q" styleClass="form-control" size="40" placeholder="Buscar ações..."  binding="#{inputQuery}"/>
-	                <h:commandButton class="btn-inside" title="Buscar" action="#{acaoBean.buscar(inputQuery.value)}">
-	                </h:commandButton>
-	            </div>
-	            
-	            <!-- Buscar -->
-	             <div class="form-group" style="text-align:center;">
-	                <h:commandButton value="Buscar"  action="#{acaoBean.buscar(inputQuery.value)}" styleClass="btn btn-lg btn-primary" />
-	            </div>
-	        </h:form>
-        </div> <!-- /.row -->
-        
-        <h3 class="text-center">Resultados Encontrados</h3>
-        <h:form>
-        <p:dataTable var="acoes" value="#{acaoBean.listaAcoes}" reflow="true" rows="20" paginator="true" paginatorPosition="bottom">
-		    <p:column headerText="Categoria">
-		        <h:outputText value="#{acoes.categoria}" />
-		    </p:column>
-		 
-		    <p:column headerText="Título">
-		        <h:outputText value="#{acoes.titulo}" />
-		    </p:column>
-		 
-		    <p:column headerText="Status">
-		        <h:outputText value="#{acoes.status}" />
-		    </p:column>
-		    
-		    <p:column headerText="UF">
-                <h:outputText value="#{acoes.endUf}" />
-            </p:column>
-            
-            <p:column headerText="Ações" styleClass="text-center">
-               <!--  <a href="/mutirapp/acao/visualizar.jsf" title="Editar" class="btn btn-xs btn-primary">
+		<div class="content-mutirapp">
+			<div class="row">
+				<h:form styleClass="col-md-6 col-md-offset-3" acceptcharset="UTF-8">
+					<!-- Nome -->
+					<div class="form-group">
+						<p:inputText id="q" styleClass="form-control" size="40"
+							placeholder="Buscar ações..." binding="#{inputQuery}" />
+						<h:commandButton class="btn-inside" title="Buscar"
+							action="#{acaoBean.buscar(inputQuery.value)}">
+						</h:commandButton>
+					</div>
+
+					<!-- Buscar -->
+					<div class="form-group" style="text-align: center;">
+						<h:commandButton value="Buscar"
+							action="#{acaoBean.buscar(inputQuery.value)}"
+							styleClass="btn btn-lg btn-primary" />
+					</div>
+				</h:form>
+			</div>
+			<!-- /.row -->
+
+			<h3 class="text-center">Resultados Encontrados</h3>
+			<h:form>
+				<p:dataTable var="acoes" value="#{acaoBean.listaAcoes}"
+					reflow="true" rows="20" paginator="true" paginatorPosition="bottom">
+					<p:column headerText="Categoria">
+						<h:outputText value="#{acoes.categoria}" />
+					</p:column>
+
+					<p:column headerText="Título">
+						<h:outputText value="#{acoes.titulo}" />
+					</p:column>
+
+					<p:column headerText="Status">
+						<h:outputText value="#{acoes.status}" />
+					</p:column>
+
+					<p:column headerText="UF">
+						<h:outputText value="#{acoes.endUf}" />
+					</p:column>
+
+					<p:column headerText="Ações" styleClass="text-center">
+						<!--  <a href="/mutirapp/acao/visualizar.jsf" title="Editar" class="btn btn-xs btn-primary">
                     <span class="glyphicon glyphicon-new-window"></span> Visualizar</a> -->
-                <a href="#" title="Editar" class="btn btn-xs btn-success">
-                    <span class="glyphicon glyphicon-ok"></span> Interessado</a>
-                    
-            <h:commandLink value="Visualizar" class="btn btn-xs btn-primary" action="#{acaoBean.visualizar}" >
-            
-           		<f:setPropertyActionListener value="#{acoes}" target="#{acaoBean.acao}"></f:setPropertyActionListener>
-        	</h:commandLink>
-            </p:column>
-		</p:dataTable>
-		</h:form>
+						<a href="#" title="Editar" class="btn btn-xs btn-success"> <span
+							class="glyphicon glyphicon-ok"></span> Interessado
+						</a>
+
+						<!--  <p:link value="Visualizar" class="btn btn-xs btn-primary" outcome="/acao/visualizar">
+            <ui:param name="id" value="#{acoes.id}" />
+        </p:link> -->
+
+						<h:commandButton id="visualizarB" value="Submit - US"
+							action="#{acaoBean.visualizar}">
+							<c:param name="acao_id" value="#{acoes.id}" />
+						</h:commandButton>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+
 		</div>
-    </ui:define>
+	</ui:define>
 </ui:composition>
 
 </html>

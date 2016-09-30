@@ -3,11 +3,11 @@ package br.com.grupo4.mutirapp.bean;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.faces.bean.ViewScoped;
+import javax.faces.bean.SessionScoped;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -16,15 +16,17 @@ import br.com.grupo4.mutirapp.service.AcaoService;
 import br.com.grupo4.mutirapp.service.AcaoServiceImpl;
 
 @ManagedBean
-@RequestScoped
-@ViewScoped
-
+@SessionScoped
 public class AcaoBean {
 
 	private AcaoService acaoService = AcaoServiceImpl.getInstance();
 	private Acao acao;
 	private List<Acao> listaAcoes;
+	FacesContext context = FacesContext.getCurrentInstance();
+	private Map<String,String> params =
+			context.getExternalContext().getRequestParameterMap();
 
+	private String acao_id;
 	public AcaoBean() {
 		this.acao = new Acao();
 	}
@@ -67,12 +69,31 @@ public class AcaoBean {
 	}
 	
 	public String visualizar() {
-		
+		FacesContext fc = FacesContext.getCurrentInstance();
+		this.acao_id = getAcaoIdParam(fc);
+
 		return "/acao/visualizar";
 	}
 	
+
+	public String getAcao_id() {
+		return acao_id;
+	}
+
+	public void setAcao_id(String acao_id) {
+		this.acao_id = acao_id;
+	}
+
+	//get value from "f:param"
+	public String getAcaoIdParam(FacesContext fc){
+
+		Map<String,String> params = fc.getExternalContext().getRequestParameterMap();
+		return params.get("acao_id");
+
+	}
+
 	public void teste() {
-		System.out.println(acao.getTitulo());
+		System.out.println(acao_id);
 	}
 
 	/*
