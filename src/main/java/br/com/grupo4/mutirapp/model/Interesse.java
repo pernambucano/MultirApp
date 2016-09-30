@@ -96,7 +96,7 @@ public class Interesse implements Serializable{
 //		final int prime = 31;
 //		int result = 1;
 //		result = prime * result + ((this.getAcao() == null) ? 0 : this.getAcao().hashCode());
-//		result = prime * result + ((this.getUsuario() == null) ? 0 : this.getUsuario().hashCode());
+//		result	 = prime * result + ((this.getUsuario() == null) ? 0 : this.getUsuario().hashCode());
 //		result = prime * result + ((this.getData() == null) ? 0 : this.getData().hashCode());		
 //		return result;
 //	}

@@ -223,7 +223,7 @@ public class Acao implements Serializable, Comparable<Acao>{
 				+ ", descricao=" + descricao + ", dataCadastro=" + dataCadastro + ", dataOcorrencia=" + dataOcorrencia
 				+ ", endCep=" + endCep + ", endUf=" + endUf + ", endCidade=" + endCidade + ", endRua=" + endRua 
 				+ ", endBairro=" + endBairro + ", endReferencia=" + endReferencia + ", status=" + status
-				+ ", observacoes=" + observacoes + ", interesses=" + interesses + "]";
+				+ ", observacoes=" + observacoes + "]";
 	}
 
 	@Override

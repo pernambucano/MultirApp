@@ -8,6 +8,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -33,7 +34,6 @@ public class Usuario implements Serializable{
 	
 	private Set<String>	permissao = new HashSet<String>(); 
 	
-	
 	public Usuario(){}
 
 	
@@ -43,6 +43,7 @@ public class Usuario implements Serializable{
 		this.senha = senha;
 		this.status = status;
 		this.acoes = acoes;
+		this.interesses = new HashSet<>();
 	}
 
 	
@@ -53,30 +54,31 @@ public class Usuario implements Serializable{
 		this.email = email;
 		this.senha = senha;
 		this.status = status;
-		interesses = new HashSet<>();
+		this.interesses = new HashSet<>();
 	}
 
 	public Usuario(String name, String email, String senha) {
 		this.name = name;
 		this.email = email;
 		this.senha = senha;
-		interesses = new HashSet<>();
+		this.interesses = new HashSet<>();
 	}
 
 	public Usuario(String name, String email) {
 		this.name = name;
 		this.email = email;
-		interesses = new HashSet<>();
+		this.interesses = new HashSet<>();
 	}
 
 	public Usuario(String name) {
 		this.name = name;
-		interesses = new HashSet<>();
+		this.interesses = new HashSet<>();
 	}
 
 	@OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL)
 	public Set<Acao> getAcoes() {
 		return acoes;
+		
 	}
 
 
@@ -84,7 +86,7 @@ public class Usuario implements Serializable{
 		this.acoes = acoes;
 	}
 	
-	@OneToMany(mappedBy = "usuario", cascade= CascadeType.ALL)
+	@OneToMany(mappedBy = "usuario", cascade= CascadeType.ALL, fetch=FetchType.EAGER)
 	public Set<Interesse> getInteresses() {
 		return interesses;
 	}

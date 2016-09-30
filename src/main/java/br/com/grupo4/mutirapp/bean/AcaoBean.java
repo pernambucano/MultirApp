@@ -12,14 +12,18 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import br.com.grupo4.mutirapp.model.Acao;
+import br.com.grupo4.mutirapp.model.Usuario;
 import br.com.grupo4.mutirapp.service.AcaoService;
 import br.com.grupo4.mutirapp.service.AcaoServiceImpl;
+import br.com.grupo4.mutirapp.service.UsuarioService;
+import br.com.grupo4.mutirapp.service.UsuarioServiceImpl;
 
 @ManagedBean
 @SessionScoped
 public class AcaoBean {
 
 	private AcaoService acaoService = AcaoServiceImpl.getInstance();
+	private UsuarioService usuarioS  = UsuarioServiceImpl.getInstance();
 	private Acao acao;
 	private List<Acao> listaAcoes;
 	FacesContext context = FacesContext.getCurrentInstance();
@@ -93,7 +97,9 @@ public class AcaoBean {
 	}
 
 	public void teste() {
-		System.out.println(acao_id);
+		Acao a = acaoService.getAcaoById(Integer.parseInt(acao_id));
+		Usuario usuario= usuarioS.getUsuarioByEmail(this.getEmailUsuario());
+		this.usuarioS.inserirInteresse(usuario, a, new Date());
 	}
 
 	/*
