@@ -86,7 +86,7 @@ public class Usuario implements Serializable{
 		this.acoes = acoes;
 	}
 	
-	@OneToMany(mappedBy = "usuario", cascade= CascadeType.ALL, fetch=FetchType.EAGER)
+	@OneToMany(mappedBy = "usuario", cascade= CascadeType.ALL)
 	public Set<Interesse> getInteresses() {
 		return interesses;
 	}

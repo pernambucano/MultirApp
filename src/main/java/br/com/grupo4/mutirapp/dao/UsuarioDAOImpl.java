@@ -1,6 +1,9 @@
 package br.com.grupo4.mutirapp.dao;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.transaction.Transactional;
 
@@ -12,7 +15,6 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.com.grupo4.mutirapp.model.Acao;
-import br.com.grupo4.mutirapp.model.Interesse;
 import br.com.grupo4.mutirapp.model.Usuario;
 import br.com.grupo4.mutirapp.util.HibernateUtil;
 
@@ -20,6 +22,20 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 	private SessionFactory sessionFactory;
 	private static UsuarioDAOImpl instance;
+	
+	public Map<Integer, List<Acao>> mapI ;
+	
+	
+
+	public Map<Integer, List<Acao>> getMapI() {
+		return mapI;
+	}
+
+
+	public void setMapI(Map<Integer, List<Acao>> mapI) {
+		this.mapI = mapI;
+	}
+
 
 	public static UsuarioDAOImpl getInstance(){
 		if (instance == null){
@@ -31,7 +47,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 
 	public UsuarioDAOImpl() {
-
+		this.mapI = new HashMap<Integer, List<Acao>>();
 		this.sessionFactory = HibernateUtil.getSessionFactory();
 	}
 
@@ -138,6 +154,7 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		criteria.add(Restrictions.eq("email", email));
 		Usuario u = (Usuario) criteria.uniqueResult();
 		session.getTransaction().commit();
+		System.out.println(u.getEmail());
 		return u;
 	}
 
@@ -158,17 +175,28 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 
 	@Override
 	@Transactional
-	public List<Acao> listarAcoesInteressadasPorId(String email) {
+	public List<Acao> listarAcoesInteressadasPorId(String  email) {
 		Usuario usuario = this.buscarPorEmail(email);
-		Session session = sessionFactory.getCurrentSession();
-		session.getTransaction().begin();
-		String querySt = "select a.* from acao a, interesse i where i.usuario_id = :usuarioId and a.id = i.acao_id";
-		SQLQuery query =  session.createSQLQuery(querySt);
-		query.addEntity(Acao.class);
-		query.setParameter("usuarioId", usuario.getId());
-		List<Acao> results = query.list();
-		session.getTransaction().commit();
+//		Session session = sessionFactory.getCurrentSession();
+//		session.getTransaction().begin();
+//		String querySt = "select a.* from acao a, interesse i where i.usuario_id = :usuarioId and a.id = i.acao_id";
+//		SQLQuery query =  session.createSQLQuery(querySt);
+//		query.addEntity(Acao.class);
+//		query.setParameter("usuarioId", usuario.getId());
+//		List<Acao> results = query.list();
+//		session.getTransaction().commit();
+		List<Acao> results = mapI.get(usuario.getId());
+		System.out.println("eita" + results.get(0));
 		return results;
 	}
 
+
+	public void inserirInteresse(Usuario u, Acao a) {
+		System.out.println("no dao" + u.getId());
+		System.out.println("no dao" + a.getTitulo());
+		System.out.println(mapI.toString());
+		List<Acao> lista = new ArrayList<Acao>();
+		mapI.put(u.getId(), lista);
+		System.out.println(mapI.toString());
+	}
 }

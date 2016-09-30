@@ -66,8 +66,12 @@ public class UsuarioServiceImpl implements UsuarioService {
 		interesse.setUsuario(usuario);
 		interesse.setAcao(a);
 		interesse.setData(data);
+		System.out.println(usuario.getName());
+		System.out.println(a.getTitulo());
+		
+		usuarioDAO.inserirInteresse(usuario, a);
 	
-		usuario.getInteresses().add(interesse);
-		usuarioDAO.atualizar(usuario);
+//		usuario.getInteresses().add(interesse);
+//		usuarioDAO.inserirInteresse(usuario, a);
 	}
 }
