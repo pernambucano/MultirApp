@@ -75,7 +75,7 @@ public class Usuario implements Serializable{
 		this.interesses = new HashSet<>();
 	}
 
-	@OneToMany(mappedBy = "usuario", cascade=CascadeType.ALL)
+	@OneToMany(mappedBy = "usuario")
 	public Set<Acao> getAcoes() {
 		return acoes;
 		

@@ -1,6 +1,7 @@
 package br.com.grupo4.mutirapp.dao;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -15,6 +16,8 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import br.com.grupo4.mutirapp.model.Acao;
+import br.com.grupo4.mutirapp.model.TipoCategoria;
+import br.com.grupo4.mutirapp.model.TipoStatus;
 import br.com.grupo4.mutirapp.model.Usuario;
 import br.com.grupo4.mutirapp.util.HibernateUtil;
 
@@ -185,6 +188,17 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 //		query.setParameter("usuarioId", usuario.getId());
 //		List<Acao> results = query.list();
 //		session.getTransaction().commit();
+//		public Acao(Usuario usuario, TipoCategoria categoria, String titulo, String descricao, Date dataCadastro,
+//				Date dataOcorrencia, String endCep, String endUf, String endCidade, String endRua,
+//				String endBairro, TipoStatus status) {
+		
+		List<Acao> lista = new ArrayList<Acao>();
+		Acao acaoTeste1 = new Acao(usuario,TipoCategoria.MEIO_AMBIENTE,"Limpar a praia", "Precisamos limpar a praça", new Date(1475111860), new Date(1475111860), "50711340", "PE", "Recife", "Rua orós", "Cordeiro", TipoStatus.EM_ABERTO);
+		lista.add(acaoTeste1);
+		if (mapI.get(usuario.getId()) == null){
+			mapI.put(usuario.getId(), lista);
+		}
+		
 		List<Acao> results = mapI.get(usuario.getId());
 		System.out.println("eita" + results.get(0));
 		return results;
@@ -195,7 +209,8 @@ public class UsuarioDAOImpl implements UsuarioDAO {
 		System.out.println("no dao" + u.getId());
 		System.out.println("no dao" + a.getTitulo());
 		System.out.println(mapI.toString());
-		List<Acao> lista = new ArrayList<Acao>();
+		List<Acao> lista = mapI.get(u.getId());
+		lista.add(a);
 		mapI.put(u.getId(), lista);
 		System.out.println(mapI.toString());
 	}
