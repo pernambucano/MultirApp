@@ -8,11 +8,14 @@ import java.util.Map;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import br.com.grupo4.mutirapp.model.Acao;
 import br.com.grupo4.mutirapp.service.AcaoService;
 import br.com.grupo4.mutirapp.service.AcaoServiceImpl;
+import br.com.grupo4.mutirapp.service.UsuarioService;
+import br.com.grupo4.mutirapp.service.UsuarioServiceImpl;
 
 @ManagedBean
 @SessionScoped
@@ -20,6 +23,7 @@ public class AcaoBean {
 
 	private AcaoService acaoService = AcaoServiceImpl.getInstance();
 	private Acao acao;
+	private UsuarioService usuarioService = UsuarioServiceImpl.getInstance();
 	private List<Acao> listaAcoes;
 	FacesContext context = FacesContext.getCurrentInstance();
 	private Map<String,String> params =
@@ -54,6 +58,7 @@ public class AcaoBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		FacesMessage message = new FacesMessage("Operação realizada com sucesso.");
 		context.addMessage(null, message);
+		acao.setUsuario(usuarioService.getUsuarioByEmail(getEmailUsuario()));
 		this.acaoService.cadastrarAcao(acao);
 		return "/acao/visualizar";
 	}
@@ -119,5 +124,13 @@ public class AcaoBean {
 	public String getData() {
 		return new SimpleDateFormat("dd/MM/yyyy").format(new Date());
 	}
+	
+	private String getEmailUsuario() {
+		FacesContext fContext = FacesContext.getCurrentInstance();
+		ExternalContext eContext = fContext.getExternalContext();
+		String email = eContext.getRemoteUser();
+		return email;
+	}
+
 	
 }
