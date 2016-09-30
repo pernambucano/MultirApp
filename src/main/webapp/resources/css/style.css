@@ -14,7 +14,6 @@ h4.section {
 /*
  * .navbar-mutirapp
  */
-
 .navbar-mutirapp {
 	background-color: #050;
 }
@@ -72,3 +71,65 @@ a.btn-danger {
 	border: none;
 }
 
+/* Button da ação */
+
+.btn-inside {
+	background-color: transparent;
+	border: none;
+	height: 34px;
+	position: absolute;
+	right: 15px;
+	top: 0;
+	width: 40px;
+}
+
+a.btn-success, a.btn-primary, a.btn-danger {
+	color: #fff;
+}
+
+/* Jumbotron */
+
+.jumbotron {
+	background: url('../resources/img/jumbotron_bg2.jpg') no-repeat center center;
+	margin-bottom: 0px;
+	height: 250px;
+}
+
+.jumbotron h1 {
+	color: #fff !important;
+}
+
+.jumbotron p {
+	color: #fff !important;
+}
+
+/* Well */
+
+.well {
+	margin: 20px 0px 0px 70px ;
+	height: 100%;
+     color: black;
+     background-color: green;
+}
+
+.well .end {
+	margin: 10px 30px 0 30px ;
+	height: 100%;
+     color: black;
+     background-color: #fff;
+}
+
+/* Footer */
+
+.footer-color-black {
+  background-color: rgba(30, 30, 30, 0.97);
+  color: #DDDDDD;
+} 
+
+.footer .copyright {
+  color: #777777;
+  padding: 10px 15px;
+  line-height: 20px;
+  margin: 25px 0;
+  text-align: center;
+}

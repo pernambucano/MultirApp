@@ -6,12 +6,21 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
 <ui:composition template="/templates/dashboard.xhtml">
-	<ui:define name="title">Minhas Ações</ui:define>
 
 	<ui:define name="content">
 
-		<div style="margin-bottom:40px;">
-			<p:dataTable paginatorPosition="bottom" var="acaoInteresse" value="#{usuarioBean.acoesInteressadas}" reflow="true" rows="20" paginator="true">
+		<div class="jumbotron">
+			<div class="container">
+				<div class="content">
+					<h1>Minhas Ações</h1>
+				</div>
+			</div>
+		</div>
+
+		<div style="margin-bottom: 40px;">
+			<p:dataTable paginatorPosition="bottom" var="acaoInteresse"
+				value="#{usuarioBean.acoesInteressadas}" reflow="true" rows="20"
+				paginator="true">
 
 				<f:facet name="header">
             	Ações que você se interessou
@@ -42,8 +51,8 @@
 					</a>
 				</p:column>
 			</p:dataTable>
-			</div>
-			<div>
+		</div>
+		<div>
 			<p:dataTable value="#{usuarioBean.acoesCadastradas}"
 				paginatorPosition="bottom" var="acaoCadastrada" reflow="true"
 				rows="20" paginator="true">
@@ -80,7 +89,7 @@
 					</a>
 				</p:column>
 			</p:dataTable>
-			</div>
+		</div>
 	</ui:define>
 </ui:composition>
 
