@@ -18,6 +18,7 @@
 		</div>
 <div class="content-mutirapp">
 		<div style="margin-bottom: 40px;">
+		<h:form>
 			<p:dataTable paginatorPosition="bottom" var="acaoInteresse"
 				value="#{usuarioBean.acoesInteressadas}" reflow="true" rows="20"
 				paginator="true">
@@ -43,16 +44,17 @@
 				</p:column>
 
 				<p:column headerText="Ações" styleClass="text-center">
-					<a href="#" title="Editar" class="btn btn-xs btn-primary"> <span
-						class="glyphicon glyphicon-pencil"></span> Editar
-					</a>
-					<a href="#" title="Excluir" class="btn btn-xs btn-danger"> <span
-						class="glyphicon glyphicon-trash"></span> Excluir
-					</a>
+					<h:commandButton id="visualizarB" value="Visualizar"
+							action="#{acaoBean.visualizar}" class="btn btn-xs btn-primary">
+							<f:param name="acao_id" value="#{acaoInteresse.id}" />
+						</h:commandButton>
+					
 				</p:column>
 			</p:dataTable>
+			</h:form>
 		</div>
 		<div>
+		<h:form>
 			<p:dataTable value="#{usuarioBean.acoesCadastradas}"
 				paginatorPosition="bottom" var="acaoCadastrada" reflow="true"
 				rows="20" paginator="true">
@@ -81,14 +83,14 @@
 					<a href="#" title="Editar" class="btn btn-xs btn-primary"> <span
 						class="glyphicon glyphicon-pencil"></span> Editar
 					</a>
-					<a href="#" title="Excluir" class="btn btn-xs btn-danger"> <span
-						class="glyphicon glyphicon-trash"></span> Excluir
-					</a>
-					<a href="#" title="Visualizar" class="btn btn-xs btn-info"> <span
-						class="glyphicon glyphicon-trash"></span> Visualizar
-					</a>
+				
+					<h:commandButton id="visualizarB" value="Visualizar"
+							action="#{acaoBean.visualizar}" class="btn btn-xs btn-primary">
+							<f:param name="acao_id" value="#{acaoCadastrada.id}" />
+						</h:commandButton>
 				</p:column>
 			</p:dataTable>
+			</h:form>
 		</div>
 		</div>
 	</ui:define>
