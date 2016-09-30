@@ -8,7 +8,6 @@ import java.util.Map;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import br.com.grupo4.mutirapp.model.Acao;
@@ -71,6 +70,7 @@ public class AcaoBean {
 	public String visualizar() {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		this.acao_id = getAcaoIdParam(fc);
+		this.acao = this.acaoService.getAcaoById(Integer.parseInt(acao_id));
 
 		return "/acao/visualizar";
 	}
@@ -120,10 +120,4 @@ public class AcaoBean {
 		return new SimpleDateFormat("dd/MM/yyyy").format(new Date());
 	}
 	
-	private String getEmailUsuario() {
-		FacesContext fContext = FacesContext.getCurrentInstance();
-		ExternalContext eContext = fContext.getExternalContext();
-		String email = eContext.getRemoteUser();
-		return email;
-	}
 }
