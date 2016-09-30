@@ -14,8 +14,6 @@ import javax.faces.context.FacesContext;
 import br.com.grupo4.mutirapp.model.Acao;
 import br.com.grupo4.mutirapp.service.AcaoService;
 import br.com.grupo4.mutirapp.service.AcaoServiceImpl;
-import br.com.grupo4.mutirapp.service.BuscaCEPService;
-import br.com.grupo4.mutirapp.service.BuscaCEPServiceImpl;
 
 @ManagedBean
 @RequestScoped
@@ -24,7 +22,6 @@ import br.com.grupo4.mutirapp.service.BuscaCEPServiceImpl;
 public class AcaoBean {
 
 	private AcaoService acaoService = AcaoServiceImpl.getInstance();
-	private BuscaCEPService buscaCepService = BuscaCEPServiceImpl.getInstance();
 	private Acao acao;
 	private List<Acao> listaAcoes;
 
@@ -52,11 +49,6 @@ public class AcaoBean {
 		return "/acao/perfil";
 	}
 	
-	public String buscarCep() {
-		this.buscaCepService.preencherEndereco(acao, acao.getEndCep());
-		return null;
-	}
-
 	public String salvar() {
 		FacesContext context = FacesContext.getCurrentInstance();
 		FacesMessage message = new FacesMessage("Operação realizada com sucesso.");
