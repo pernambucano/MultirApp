@@ -23,7 +23,6 @@ public class UsuarioBean {
 	private UsuarioService usuarioService = UsuarioServiceImpl.getInstance();
 	private Usuario usuario;
 	private String confirmacaoSenha;
-	private Acao acaoSelecionada;
 	
 	public UsuarioBean() {
 		this.usuario = new Usuario();
@@ -98,14 +97,6 @@ public class UsuarioBean {
 
 	public void setUsuario(Usuario usuario) {
 		this.usuario = usuario;
-	}
-
-	public Acao getAcaoSelecionada() {
-		return acaoSelecionada;
-	}
-
-	public void setAcaoSelecionada(Acao acaoSelecionada) {
-		this.acaoSelecionada = acaoSelecionada;
 	}
 	
 	public String getConfirmacaoSenha() {
