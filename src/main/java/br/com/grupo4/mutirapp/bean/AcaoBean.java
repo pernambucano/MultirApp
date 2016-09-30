@@ -25,6 +25,7 @@ public class AcaoBean {
 	private AcaoService acaoService = AcaoServiceImpl.getInstance();
 	private UsuarioService usuarioS  = UsuarioServiceImpl.getInstance();
 	private Acao acao;
+	private UsuarioService usuarioService = UsuarioServiceImpl.getInstance();
 	private List<Acao> listaAcoes;
 	FacesContext context = FacesContext.getCurrentInstance();
 	private Map<String,String> params =
@@ -59,6 +60,7 @@ public class AcaoBean {
 		FacesContext context = FacesContext.getCurrentInstance();
 		FacesMessage message = new FacesMessage("Operação realizada com sucesso.");
 		context.addMessage(null, message);
+		acao.setUsuario(usuarioService.getUsuarioByEmail(getEmailUsuario()));
 		this.acaoService.cadastrarAcao(acao);
 		return "/acao/visualizar";
 	}
@@ -75,6 +77,7 @@ public class AcaoBean {
 	public String visualizar() {
 		FacesContext fc = FacesContext.getCurrentInstance();
 		this.acao_id = getAcaoIdParam(fc);
+		this.acao = this.acaoService.getAcaoById(Integer.parseInt(acao_id));
 
 		return "/acao/visualizar";
 	}
@@ -132,4 +135,6 @@ public class AcaoBean {
 		String email = eContext.getRemoteUser();
 		return email;
 	}
+
+	
 }
