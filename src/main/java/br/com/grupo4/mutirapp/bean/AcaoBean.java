@@ -73,6 +73,15 @@ public class AcaoBean {
 		this.acaoService.getAcaoById(id);
 		return "/acao/visualizar";
 	}
+	
+	public String visualizar() {
+		
+		return "/acao/visualizar";
+	}
+	
+	public void teste() {
+		System.out.println(acao.getTitulo());
+	}
 
 	/*
 	 * Getters e setters

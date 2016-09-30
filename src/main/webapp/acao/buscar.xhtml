@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
     xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
     xmlns:p="http://primefaces.org/ui"
     xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     
@@ -32,7 +33,7 @@
         </div> <!-- /.row -->
         
         <h3 class="text-center">Resultados Encontrados</h3>
-        
+        <h:form>
         <p:dataTable var="acoes" value="#{acaoBean.listaAcoes}" reflow="true" rows="20" paginator="true" paginatorPosition="bottom">
 		    <p:column headerText="Categoria">
 		        <h:outputText value="#{acoes.categoria}" />
@@ -56,12 +57,13 @@
                 <a href="#" title="Editar" class="btn btn-xs btn-success">
                     <span class="glyphicon glyphicon-ok"></span> Interessado</a>
                     
-            <p:link value="Visualizar" class="btn btn-xs btn-primary" outcome="/acao/visualizar">
-            <ui:param name="id" value="#{acoes.id}" />
-           
-        </p:link>
+            <h:commandLink value="Visualizar" class="btn btn-xs btn-primary" action="#{acaoBean.visualizar}" >
+            
+           		<f:setPropertyActionListener value="#{acoes}" target="#{acaoBean.acao}"></f:setPropertyActionListener>
+        	</h:commandLink>
             </p:column>
 		</p:dataTable>
+		</h:form>
 		</div>
     </ui:define>
 </ui:composition>
